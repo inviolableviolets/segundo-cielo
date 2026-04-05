@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Espacios físicos | Segundo Cielo Dossier">
@@ -17,12 +17,12 @@ import Layout from '../layouts/Layout.astro';
     />
 
     <p class="intro-p">
-      La acción transcurre prácticamente en un único apartamento
-      compartido, donde la cotidianeidad adquiere un carácter cada vez más
-      opresivo. Dentro de este entorno, la zona de estudio —presidida por
-      el ordenador— se convierte en el núcleo emocional de la
-      protagonista, un refugio dentro de la casa donde pasa largas horas
-      aislada, desplazando su relación con el exterior hacia la pantalla.
+      La acción transcurre prácticamente en un único apartamento compartido,
+      donde la cotidianeidad adquiere un carácter cada vez más opresivo. Dentro
+      de este entorno, la zona de estudio —presidida por el ordenador— se
+      convierte en el núcleo emocional de la protagonista, un refugio dentro de
+      la casa donde pasa largas horas aislada, desplazando su relación con el
+      exterior hacia la pantalla.
     </p>
 
     <div class="carrusel-wrapper">
@@ -47,110 +47,194 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-          <p style="margin: -5rem 0 5rem 0">
-            Son habitaciones vividas, con un cierto desorden que refleja el
-            momento por el que está pasando la pareja. Además, sitúa la acción
-            en un contexto temporal concreto (principio de los 00s), con una
-            estética contenida, sin excesos decorativos, pero atravesada por
-            objetos y referencias propias de la época. A medida que avanza la
-            historia, este mismo espacio se convierte en el escenario donde se
-            manifiesta la decadencia de la relación y el deterioro de la salud
-            mental de la protagonista.
-          </p>
-        </section>
-      </div>
+    <p style="margin: -5rem 0 5rem 0">
+      Son habitaciones vividas, con un cierto desorden que refleja el momento
+      por el que está pasando la pareja. Además, sitúa la acción en un contexto
+      temporal concreto (principio de los 00s), con una estética contenida, sin
+      excesos decorativos, pero atravesada por objetos y referencias propias de
+      la época. A medida que avanza la historia, este mismo espacio se convierte
+      en el escenario donde se manifiesta la decadencia de la relación y el
+      deterioro de la <span id="salud-trigger">salud mental</span> de la protagonista.
+    </p>
+  </section>
 
-      <img
-        src="https://blob.gifcities.org/gifcities/OGBEAQDLE63ETFZMOFINNRMLH55J62LZ.gif"
-        style="width: 100%"
-      />
+  <img
+    src="https://blob.gifcities.org/gifcities/OGBEAQDLE63ETFZMOFINNRMLH55J62LZ.gif"
+    style="width: 100%"
+  />
+</Layout>
 
+<style>
+  #intro {
+    columns: 1 !important;
+    display: flex;
+    flex-direction: column;
+  }
 
-  <style>
-    .intro-gif {
-      display: flex;
-      justify-self: center;
-      margin: 4rem -2rem;
-      width: 50%;
-    }
-    .intro-p {
-      margin: -2rem 0 0rem 0;
-    }
+  .intro-gif {
+    display: flex;
+    justify-self: center;
+    position: fixed;
+    right: 0;
+    top: 20%;
+    width: 20%;
+    z-index: 0;
+    display: none;
+  }
+  .intro-p {
+    margin: 2rem 0 0rem 0;
+  }
 
-    p{
-      font-size: 1.5rem;
-      background: yellow;
-      color: black;
-      font-family: Arial, Helvetica, sans-serif;
-      font-style: italic;
-      font-weight: bold;
-    }
-    .carrusel-wrapper {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      border: 10px solid var(--color-yellow);
-      height: 500px;
-      margin-bottom: 5rem;
-    }
-    .espacios-carrusel {
-      display: flex;
-      flex-wrap: nowrap;
-      will-change: transform;
-    }
-    .espacios-carrusel img {
-      max-height: 500px;
-      /* transition: transform 0.3s, box-shadow 0.3s; */
-    }
-    .espacios-carrusel img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 100px var(--color-black);
-    }
-    .overlay-gif {
-      position: absolute;
-      z-index: 99;
-      top: -5%;
-      left: -10%;
-      width: 120%;
-      height: 110%;
-      pointer-events: none;
-    }
-    .final-p {
-      margin-bottom: 5rem;
-    }
-  </style>
+  p {
+    font-size: 1.5rem;
+    background: yellow;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .carrusel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border: 10px solid var(--color-yellow);
+    height: 500px;
+    margin-bottom: 5rem;
+  }
+  .espacios-carrusel {
+    display: flex;
+    flex-wrap: nowrap;
+    will-change: transform;
+  }
+  .espacios-carrusel img {
+    max-height: 500px;
+    flex-shrink: 0;
+  }
+  .espacios-carrusel img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 100px var(--color-black);
+  }
+  .overlay-gif {
+    position: absolute;
+    z-index: 99;
+    top: -5%;
+    left: -10%;
+    width: 120%;
+    height: 110%;
+    pointer-events: none;
+  }
+  .final-p {
+    margin-bottom: 5rem;
+  }
 
-  <script>
-    function setupCarousel() {
-      const carrusel = document.getElementById("carrusel") as HTMLElement;
-      if (!carrusel) return;
+  /* USA :global PARA QUE ASTRO NO LO FILTRE EN JS */
+  :global(.jesus-gif) {
+    border: 5px solid white !important;
+    box-sizing: border-box; /* Asegura que el borde no sume tamaño extra y desborde */
+  }
 
-      // Duplicate content for seamless loop
-      carrusel.innerHTML += carrusel.innerHTML;
+  /* --- SPAN SALUD MENTAL --- */
+  #salud-trigger {
+    color: #ff00ff;
+    text-decoration: underline wavy #ff00ff;
+    cursor: pointer;
+    font-weight: 900;
+  }
+</style>
 
-      let scrollLeft = 0;
-      const velocidad = 3.5; // Adjusted for smoothness
-      let pausado = false;
+<script>
+  function setupCarousel() {
+    const carrusel = document.getElementById("carrusel") as HTMLElement;
+    if (!carrusel) return;
 
-      function animarCarrusel() {
-        if (!document.getElementById("carrusel")) return; // Stop if navigated away
+    carrusel.innerHTML += carrusel.innerHTML;
 
-        if (!pausado) {
-          scrollLeft += velocidad;
-          if (scrollLeft >= carrusel.scrollWidth / 2) {
-            scrollLeft = 0;
-          }
-          carrusel.style.transform = `translateX(-${scrollLeft}px)`;
+    let scrollLeft = 0;
+    const velocidad = 3.5;
+    let pausado = false;
+
+    function animarCarrusel() {
+      if (!document.getElementById("carrusel")) return;
+
+      if (!pausado) {
+        scrollLeft += velocidad;
+        if (scrollLeft >= carrusel.scrollWidth / 2) {
+          scrollLeft = 0;
         }
-        requestAnimationFrame(animarCarrusel);
+        carrusel.style.transform = `translateX(-${scrollLeft}px)`;
+      }
+      requestAnimationFrame(animarCarrusel);
+    }
+
+    carrusel.addEventListener("mouseenter", () => {
+      pausado = true;
+    });
+    carrusel.addEventListener("mouseleave", () => {
+      pausado = false;
+    });
+
+    animarCarrusel();
+  }
+
+  // --- LÓGICA DE LA SALUD MENTAL INALCANZABLE ---
+  function setupSaludMental() {
+    const trigger = document.getElementById(
+      "salud-trigger",
+    ) as HTMLSpanElement | null;
+    if (!trigger) return;
+
+    const gifUrl =
+      "https://web.archive.org/web/20091027154845im_/http://geocities.com/merlim_2000/hug.gif";
+
+    trigger.addEventListener("click", () => {
+      const img = document.createElement("img");
+      img.src = gifUrl;
+      img.className = "jesus-gif";
+      img.style.position = "fixed";
+      img.style.zIndex = "999999";
+      img.style.cursor = "none";
+      img.style.transition = "top 0.1s ease, left 0.1s ease";
+
+      document.body.appendChild(img);
+
+      function moverImagen() {
+        // En móviles la imagen puede tardar en cargar y darnos width 0.
+        // Usamos valores fijos seguros de fallback si aún no cargó.
+        const imgWidth = img.offsetWidth || 150;
+        const imgHeight = img.offsetHeight || 150;
+
+        const maxX = window.innerWidth - imgWidth;
+        const maxY = window.innerHeight - imgHeight;
+
+        const randomX = Math.max(0, Math.floor(Math.random() * maxX));
+        const randomY = Math.max(0, Math.floor(Math.random() * maxY));
+
+        img.style.left = `${randomX}px`;
+        img.style.top = `${randomY}px`;
       }
 
-      carrusel.addEventListener("mouseenter", () => { pausado = true; });
-      carrusel.addEventListener("mouseleave", () => { pausado = false; });
+      moverImagen();
 
-      animarCarrusel();
-    }
+      // RATÓN (PC)
+      img.addEventListener("mouseover", moverImagen);
 
+      // TÁCTIL (Móvil): Se mueve inmediatamente al intentar tocarlo
+      img.addEventListener(
+        "touchstart",
+        (e) => {
+          e.preventDefault(); // Evita clicks fantasmas o zoom al tocar rápido
+          moverImagen();
+        },
+        { passive: false },
+      );
+    });
+  }
+
+  setupCarousel();
+  setupSaludMental();
+
+  document.addEventListener("astro:after-swap", () => {
     setupCarousel();
-  </script>
-</Layout>
+    setupSaludMental();
+  });
+</script>

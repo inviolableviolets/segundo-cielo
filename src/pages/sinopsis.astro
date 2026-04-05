@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Sinopsis | Segundo Cielo Dossier">
@@ -12,35 +12,38 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="intro-flex">
       <p>
-        Es el año 2006, <a href="/lucia">Lucía (27)</a> ha sufrido
-        un aborto involuntario. Convive con su pareja
-        <a href="/marco">Marco (30)</a> (30). Ella está aislada en
-        casa, su ordenador como único refugio. Es evidente que esta
-        pérdida ha deteriorado su relación con el mundo exterior, no está
-        trabajando y, aunque sigan juntos, la relación con Marco se ha
-        convertido en un desmejorado fantasma de lo que solía ser.
+        Es el año 2006, <a href="/lucia">Lucía (27)</a> ha sufrido un aborto involuntario.
+        Convive con su pareja
+        <a href="/marco">Marco (30)</a> (30). Ella está aislada en casa, su ordenador
+        como único refugio. Es evidente que esta pérdida ha deteriorado su relación
+        con el mundo exterior, no está trabajando y, aunque sigan juntos, la relación
+        con Marco se ha convertido en un desmejorado fantasma de lo que solía ser.
       </p>
-      <img
-        src="/assets/sinopsis2.jpg"
-        alt=""
-        class="side-img"
-      />
+      <img src="/assets/sinopsis2.jpg" alt="" class="side-img" />
     </div>
 
     <p>
       Ensimismada en su búsqueda por una fuerza superior llega a la web
-      <span>“Segundo Cielo”.</span>Un sitio esotérico, de corte sectario
-      que recoge algunas ideas de textos apócrifos cristianos y los
-      convierte en una promesa de sanación. Según la página, es posible
-      ascender a est<span>e Segundo Cielo</span> a través de la figura de
-      El Guía. Para llamar a esta entidad, necesita realizar cuatro
-      rituales y subirlos a <a href="./contactanos">la web.</a>
+      <span>“Segundo Cielo”.</span> Un sitio esotérico, de corte sectario que recoge
+      algunas ideas de textos apócrifos cristianos y los convierte en una promesa
+      de sanación. Según la página, es posible ascender a est<span
+        >Segundo Cielo</span
+      > a través de la figura de El Guía. Para llamar a esta entidad, necesita realizar
+      cuatro rituales y subirlos a <a href="./contactanos">la web.</a>
     </p>
 
     <p>
       Cada nuevo ritual la acerca un poco más a un territorio extraño que
       empieza a consumirla.
     </p>
+
+    <div class="download" id="disparador-descarga">
+      <img
+        src="https://web.archive.org/web/20091027035954im_/http://geocities.com/dapperdanobrother/download.gif"
+        alt=""
+      />
+      <p>descarga el gui<b>ó</b>n aquí</p>
+    </div>
 
     <div class="canvas-wrapper">
       <img
@@ -51,18 +54,94 @@ import Layout from '../layouts/Layout.astro';
       />
       <canvas id="pizarra-canvas"></canvas>
     </div>
-
   </section>
+
+  <div class="modal-pass-overlay" id="pass-modal">
+    <div class="modal-pass-content">
+      <div class="modal-pass-header">
+        <div class="header-title-wrapper">
+          <img
+            src="https://blob.gifcities.org/gifcities/22KBYTQ3YRKZBRWEXSJPED4KCP4FCKV2.gif"
+            alt=""
+          />
+          <span style="margin-left: 15px;">ACCESO RESTRINGIDO</span>
+        </div>
+      </div>
+      <div class="modal-pass-body">
+        <p class="instrucciones">
+          Introduzca la clave para iniciar la descarga del documento .PDF
+        </p>
+
+        <div class="input-group">
+          <label for="pass-input">Password:</label>
+          <input
+            type="password"
+            id="pass-input"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="feedback-container">
+          <p id="msg-feedback" class="feedback-text"></p>
+          <img
+            id="gif-error"
+            src="https://blob.gifcities.org/gifcities/HEK3D2JN24NP3IPLVMQ5X7HWJPBXEWLK.gif"
+            alt="Error"
+            style="display: none;"
+          />
+        </div>
+
+        <div class="modal-pass-actions">
+          <button id="btn-validar">ACEPTAR</button>
+          <button id="btn-cancelar">CANCELAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
 
 <style>
+  .download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 10px dashed blue;
+    background-color: rgba(240, 248, 255, 0.8);
+    cursor: pointer;
+    width: fit-content;
+    padding: 0 1rem;
+    margin: 2rem auto;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    p {
+      color: red;
+      background: transparent !important;
+      flex-direction: column;
+      font-size: 2rem !important;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: -2rem;
+      text-align: center;
+    }
+
+    b {
+      font-weight: normal;
+      font-size: 1.5rem;
+      color: red;
+    }
+  }
+
   #sinopsis p {
     background-color: var(--color-purple);
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-
-
 
   .intro-flex {
     display: flex;
@@ -99,7 +178,7 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
-  .h1{
+  .h1 {
     cursor: pointer;
   }
 
@@ -109,23 +188,38 @@ import Layout from '../layouts/Layout.astro';
     filter: contrast(2);
   }
 
+  @media screen and (max-width: 900px) {
+    .side-img {
+      display: none;
+    }
+
+    .download {
+      scale: 0.8;
+
+      p {
+        font-size: 1.2rem !important;
+      }
+
+      b {
+        font-size: 1rem !important;
+      }
+    }
+  }
+
   /* NUEVOS ESTILOS PARA LA PIZARRA DE DIBUJO */
   .canvas-wrapper {
     position: relative;
     width: 100%;
     margin-bottom: 5rem;
-    line-height: 0; 
-    
-    /* 1. Ponemos el cursor aquí por si acaso */
-    cursor: crosshair !important; 
+    line-height: 0;
+    cursor: crosshair !important;
   }
 
   .banner-img {
     width: 100%;
     height: auto;
     display: block;
-    /* 2. Le decimos a la imagen que ignore el ratón para que no "tape" al canvas */
-    pointer-events: none; 
+    pointer-events: none;
   }
 
   #pizarra-canvas {
@@ -135,54 +229,184 @@ import Layout from '../layouts/Layout.astro';
     width: 100%;
     height: 100%;
     z-index: 10;
-    
-  cursor: url('data:image/x-icon;base64,AAACAAEAICAQAAAAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAKHmAML1/wBxRMkAfXpwALGK/wDHt6EAAN3/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAAAAAAAAAAAAAAAAAAzVQAAAAAAAAAAAAAAAAAGBVVQAAAAAAAAAAAAAAAABGBVUAAAAAAAAAAAAAAAARBGBQAAAAAAAAAAAAAAABF3BGAAAAAAAAAAAAAAAAEXcXAAAAAAAAAAAAAAAAARdxdwAAAAAAAAAAAAAAABF3F3AAAAAAAAAAAAAAAAEXcXcAAAAAAAAAAAAAAAARdxdwAAAAAAAAAAAAAAABF3F3AAAAAAAAAAAAAAAAEXcXcAAAAAAAAAAAAAAAABdxdwAAAAAAAAAAAAAAAAInF3AAAAAAAAAAAAAAAAACIncAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////////////////////////////////////////////////////////////////z////4f///8D///+Af///AH///gD///wB///4A///8Af//+AP///AH///gD///wB///4A///+Af///AP///wH///8D////D////w=='), auto !important; }   
+    cursor:
+      url("data:image/x-icon;base64,AAACAAEAICAQAAAAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAKHmAML1/wBxRMkAfXpwALGK/wDHt6EAAN3/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAAAAAAAAAAAAAAAAAAzVQAAAAAAAAAAAAAAAAAGBVVQAAAAAAAAAAAAAAAABGBVUAAAAAAAAAAAAAAAARBGBQAAAAAAAAAAAAAAABF3BGAAAAAAAAAAAAAAAAEXcXAAAAAAAAAAAAAAAAARdxdwAAAAAAAAAAAAAAABF3F3AAAAAAAAAAAAAAAAEXcXcAAAAAAAAAAAAAAAARdxdwAAAAAAAAAAAAAAABF3F3AAAAAAAAAAAAAAAAEXcXcAAAAAAAAAAAAAAAABdxdwAAAAAAAAAAAAAAAAInF3AAAAAAAAAAAAAAAAACIncAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////////////////////////////////////////////////////////////////z////4f///8D///+Af///AH///gD///wB///4A///8Af//+AP///AH///gD///wB///4A///+Af///AP///wH///8D////D////w=="),
+      auto !important;
+  }
+
+  /* --- CSS DEL MODAL WEBCORE --- */
+  .modal-pass-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999999;
+    display: none; /* Se activa por JS */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-pass-content {
+    background: #c0c0c0; /* Gris clásico win95 */
+    border: 4px outset #fff;
+    width: 90%;
+    max-width: 380px;
+    font-family:
+      "Courier New", Courier, monospace; /* Toque tosco y de código */
+    box-shadow: 10px 10px 0px #000;
+  }
+
+  .modal-pass-header {
+    background: #000080; /* Azul marino win95 */
+    color: #fff;
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .header-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Espacio entre el gif y el texto */
+  }
+
+  .modal-pass-body {
+    padding: 15px;
+    color: #000;
+  }
+
+  .instrucciones {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    background: transparent !important; /* Reseteamos lo morado del padre */
+    line-height: 1.2;
+    color: #000 !important;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .input-group label {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .input-group input {
+    flex: 1;
+    background: #fff;
+    border: 3px inset #808080;
+    padding: 5px;
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+    color: #000;
+  }
+
+  /* Contenedor de feedback centrado */
+  .feedback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    margin-bottom: 15px;
+    gap: 5px;
+  }
+
+  .feedback-text {
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: transparent !important;
+    text-align: center;
+    margin: 0;
+  }
+
+  .feedback-text.error {
+    color: #ff0000 !important;
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+  .feedback-text.success {
+    color: #008000 !important;
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+  /* --- GIF DE ERROR MODIFICADO: 100% DEL ANCHO DEL MODAL --- */
+  #gif-error {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: auto; /* Mantiene la proporción */
+    max-height: none; /* Eliminada la limitación de altura */
+    max-width: 100%; /* Asegura que no se salga de su contenedor flex */
+    display: block;
+    margin: 10px auto; /* Un poco de margen vertical y centrado horizontal */
+  }
+
+  .modal-pass-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .modal-pass-actions button {
+    background: #c0c0c0;
+    border: 3px outset #fff;
+    padding: 6px 15px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .modal-pass-actions button:active {
+    border-style: inset;
+  }
+
+  #btn-validar {
+    background: #00ff00; /* Verde chillón para guiar al usuario */
+    color: #000;
+  }
 </style>
 
 <script>
   function setupPizarra() {
-    const canvas = document.getElementById('pizarra-canvas') as HTMLCanvasElement;
-    const img = document.getElementById('pizarra-image') as HTMLImageElement;
-    
+    const canvas = document.getElementById(
+      "pizarra-canvas",
+    ) as HTMLCanvasElement;
+    const img = document.getElementById("pizarra-image") as HTMLImageElement;
+
     if (!canvas || !img) return;
 
-    // SOLUCIÓN AL TIPADO: Le aseguramos a TS que getContext('2d') devuelve el contexto y no es null
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     if (!ctx) return;
 
-    // Variables de estado del dibujo
     let dibujando = false;
     let xAnterior = 0;
     let yAnterior = 0;
 
-    // Función para ajustar el tamaño real del canvas al tamaño visual de la imagen
     function ajustarTamañoCanvas() {
-      // El tamaño interno del canvas (width/height) debe coincidir
-      // con el tamaño visual (offsetWidth/offsetHeight)
       canvas.width = img.offsetWidth;
       canvas.height = img.offsetHeight;
-
-      // Configuraciones de estilo de la línea
-      ctx.strokeStyle = '#000000'; // Color negro
-      ctx.lineWidth = 3;           // Grosor de la línea
-      ctx.lineCap = 'round';       // Bordes redondeados para suavidad
-      ctx.lineJoin = 'round';
+      ctx.strokeStyle = "#000000";
+      ctx.lineWidth = 3;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
     }
 
-    // Ajustar tamaño al cargar la imagen y si se cambia el tamaño de la ventana
     if (img.complete) {
       ajustarTamañoCanvas();
     } else {
-      img.addEventListener('load', ajustarTamañoCanvas);
+      img.addEventListener("load", ajustarTamañoCanvas);
     }
-    window.addEventListener('resize', ajustarTamañoCanvas);
-
-
-    // --- Funciones de dibujo ---
+    window.addEventListener("resize", ajustarTamañoCanvas);
 
     function empezarDibujo(e: MouseEvent | TouchEvent) {
       dibujando = true;
-      // Obtenemos las coordenadas correctas relativas al canvas
       const { x, y } = obtenerCoordenadas(e);
       xAnterior = x;
       yAnterior = y;
@@ -190,19 +414,14 @@ import Layout from '../layouts/Layout.astro';
 
     function dibujar(e: MouseEvent | TouchEvent) {
       if (!dibujando) return;
-      // Evita que la página haga scroll al dibujar en móvil
       if (e instanceof TouchEvent) {
-        e.preventDefault(); 
+        e.preventDefault();
       }
-
       const { x, y } = obtenerCoordenadas(e);
-
       ctx.beginPath();
-      ctx.moveTo(xAnterior, yAnterior); // Punto de partida
-      ctx.lineTo(x, y);                 // Punto actual
-      ctx.stroke();                     // Dibuja la línea
-
-      // Actualizamos las coordenadas anteriores para la siguiente línea
+      ctx.moveTo(xAnterior, yAnterior);
+      ctx.lineTo(x, y);
+      ctx.stroke();
       xAnterior = x;
       yAnterior = y;
     }
@@ -211,37 +430,105 @@ import Layout from '../layouts/Layout.astro';
       dibujando = false;
     }
 
-    // Función auxiliar para calcular coordenadas relativas al elemento canvas
     function obtenerCoordenadas(e: MouseEvent | TouchEvent) {
       const rect = canvas.getBoundingClientRect();
-      
-      // Manejo de ratón y pantallas táctiles
       if (e instanceof MouseEvent) {
-        return {
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        };
+        return { x: e.clientX - rect.left, y: e.clientY - rect.top };
       } else {
-        // TouchEvent
         return {
           x: e.touches[0].clientX - rect.left,
-          y: e.touches[0].clientY - rect.top
+          y: e.touches[0].clientY - rect.top,
         };
       }
     }
 
-
-    // --- Event Listeners del Ratón ---
-    canvas.addEventListener('mousedown', empezarDibujo);
-    canvas.addEventListener('mousemove', dibujar);
-    window.addEventListener('mouseup', pararDibujo); // Window para capturar el 'up' fuera del canvas
-
-    // --- Event Listeners Táctiles (para móvil) ---
-    canvas.addEventListener('touchstart', empezarDibujo, { passive: false });
-    canvas.addEventListener('touchmove', dibujar, { passive: false });
-    canvas.addEventListener('touchend', pararDibujo);
+    canvas.addEventListener("mousedown", empezarDibujo);
+    canvas.addEventListener("mousemove", dibujar);
+    window.addEventListener("mouseup", pararDibujo);
+    canvas.addEventListener("touchstart", empezarDibujo, { passive: false });
+    canvas.addEventListener("touchmove", dibujar, { passive: false });
+    canvas.addEventListener("touchend", pararDibujo);
   }
 
-  // Ejecutar la configuración al cargar la página
+  function setupGuionDownload() {
+    const disparador = document.getElementById("disparador-descarga");
+    const modal = document.getElementById("pass-modal");
+    const btnCancelar = document.getElementById("btn-cancelar");
+    const btnValidar = document.getElementById("btn-validar");
+    const inputPass = document.getElementById("pass-input") as HTMLInputElement;
+    const msgFeedback = document.getElementById("msg-feedback");
+    const gifError = document.getElementById("gif-error") as HTMLImageElement;
+
+    if (
+      !disparador ||
+      !modal ||
+      !btnCancelar ||
+      !btnValidar ||
+      !inputPass ||
+      !msgFeedback ||
+      !gifError
+    )
+      return;
+
+    disparador.addEventListener("click", () => {
+      modal.style.display = "flex";
+      inputPass.value = "";
+      msgFeedback.textContent = "";
+      msgFeedback.className = "feedback-text";
+      gifError.style.display = "none"; // Ocultamos el gif al abrir
+      inputPass.focus();
+    });
+
+    function cerrarModal() {
+      modal!.style.display = "none";
+    }
+
+    btnCancelar.addEventListener("click", cerrarModal);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) cerrarModal();
+    });
+
+    function validarPassword() {
+      const valor = inputPass.value.trim();
+
+      if (valor === "1234") {
+        msgFeedback!.textContent = "CLAVE CORRECTA: Iniciando descarga.";
+        msgFeedback!.className = "feedback-text success";
+        gifError!.style.display = "none"; // Escondemos el gif si estaba activo
+
+        const enlace = document.createElement("a");
+        enlace.href = "/assets/guion.pdf";
+        enlace.download = "guion-segundo-cielo.pdf";
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
+
+        setTimeout(cerrarModal, 1500);
+      } else {
+        msgFeedback!.textContent = "ERROR: CLAVE INCORRECTA.";
+        msgFeedback!.className = "feedback-text error";
+        gifError!.style.display = "block"; // ¡Mostramos el gif de error masivo!
+
+        inputPass.value = "";
+        inputPass.focus();
+      }
+    }
+
+    btnValidar.addEventListener("click", validarPassword);
+
+    inputPass.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        validarPassword();
+      }
+    });
+  }
+
   setupPizarra();
+  setupGuionDownload();
+
+  document.addEventListener("astro:after-swap", () => {
+    setupPizarra();
+    setupGuionDownload();
+  });
 </script>

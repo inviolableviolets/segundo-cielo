@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contáctanos | Segundo Cielo Dossier">
@@ -10,122 +10,131 @@ import Layout from '../layouts/Layout.astro';
       </hgroup>
     </a>
     <div class="contact-content">
-      <p>
-        Si sientes la necesidad de escribir, hazlo sin pensarlo demasiado.
-        No necesitas encontrar las palabras perfectas.
+      <p class="intro-p">
+        Si sientes la necesidad de escribir, hazlo sin pensarlo demasiado. No
+        necesitas encontrar las palabras perfectas.
       </p>
 
-      <p>
+      <p class="intro-p">
         Cuando estés listo, puedes enviarnos un correo; a veces, ese pequeño
         paso es suficiente para empezar a cambiar algo.
       </p>
 
       <marquee scrollamount="20">
-        En Segundo Cielo leemos cada mensaje con calma y sin juicio,
-        acompañando lo que compartas desde el respeto y la escucha.
+        En Segundo Cielo leemos cada mensaje con calma y sin juicio, acompañando
+        lo que compartas desde el respeto y la escucha.
       </marquee>
-
-      <div id="notificacion">
-        ✨ ¡¡Mensaje enviado con éxito al Segundo Cielo!! ✨
-        <img
-          src="https://i.pinimg.com/originals/99/58/75/995875404e6975ddbc7a5f9fe1228fdf.gif"
-          alt=""
-        />
-      </div>
 
       <div class="form-container">
         <form id="mi-formulario">
-          <table>
-            <tr>
-              <td>Tu nombre:</td>
-              <td>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  size="30"
-                  placeholder="Escribe tu nombre aqui"
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Tu email:</td>
-              <td>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  size="30"
-                  placeholder="tu@email.com"
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Asunto:</td>
-              <td>
-                <input
-                  type="text"
-                  id="asunto"
-                  name="asunto"
-                  size="30"
-                  placeholder="Escribe tu asunto aquí"
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Mensaje:</td>
-              <td>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  rows="6"
-                  cols="30"
-                  placeholder="Escribe tu historia aquí"
-                  required
-                ></textarea>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" align="center">
-                <input
-                  type="submit"
-                  id="btn-enviar"
-                  value="👉 ENVIAR YA 👈"
-                />
-                &nbsp;&nbsp;
-                <input
-                  type="reset"
-                  value="Borrar todo"
-                  class="btn-reset"
-                />
-              </td>
-            </tr>
-          </table>
-
           <img
             src="https://blob.gifcities.org/gifcities/E6PT63GMIYYJHYSZXB2LYQCCU7MWOYBN.gif"
             alt=""
             class="contactanos-gif"
           />
+
+          <div class="form-main-area">
+            <div id="notificacion">
+              <span>✨ ¡¡Mensaje enviado con éxito al Segundo Cielo!! ✨</span>
+              <img
+                src="https://i.pinimg.com/originals/99/58/75/995875404e6975ddbc7a5f9fe1228fdf.gif"
+                alt=""
+              />
+            </div>
+
+            <div id="tabla-contenedor">
+              <table>
+                <tr>
+                  <td class="label-cell">Tu nombre:</td>
+                  <td class="input-cell">
+                    <input
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      size="30"
+                      placeholder="Escribe tu nombre aqui"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Tu email:</td>
+                  <td class="input-cell">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      size="30"
+                      placeholder="tu@email.com"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Asunto:</td>
+                  <td class="input-cell">
+                    <input
+                      type="text"
+                      id="asunto"
+                      name="asunto"
+                      size="30"
+                      placeholder="Escribe tu asunto aquí"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Mensaje:</td>
+                  <td class="input-cell">
+                    <textarea
+                      id="mensaje"
+                      name="mensaje"
+                      rows="6"
+                      cols="30"
+                      placeholder="Escribe tu historia aquí"
+                      required></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center" class="actions-cell">
+                    <div class="btn-group">
+                      <input
+                        type="submit"
+                        id="btn-enviar"
+                        value="👉 ENVIAR YA 👈"
+                      />
+                      <input
+                        type="reset"
+                        value="Borrar todo"
+                        class="btn-reset"
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </form>
       </div>
     </div>
   </section>
 
   <style>
-    #contactanos p {
+    /* --- ESTILOS GENERALES (INTACTOS) --- */
+    #contactanos .intro-p {
       background-color: var(--color-blue-bg);
       font-size: 1.5rem;
       margin-bottom: 1rem;
+      text-align: center;
+      max-width: 800px;
+      width: 90%;
     }
 
     #contactanos {
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 10px;
     }
 
     .contact-content {
@@ -136,7 +145,6 @@ import Layout from '../layouts/Layout.astro';
       align-items: center;
     }
 
-    /* CSS CORREGIDO */
     .form-container {
       margin-top: 4rem;
       width: 100%;
@@ -144,29 +152,40 @@ import Layout from '../layouts/Layout.astro';
       justify-content: center;
     }
 
+    /* --- NUEVO LAYOUT DEL FORMULARIO (GRID) --- */
     #mi-formulario {
-      display: flex !important;
-      flex-direction: row-reverse !important;
+      display: grid !important;
+      grid-template-columns: 300px 1fr; /* GIF fijo a 300px, el resto para la tabla */
       align-items: center;
-      justify-content: center;
+      justify-items: center;
       padding: 10px;
-      gap: 30px; /* Separación de 30px entre la tabla y el GIF */
+      gap: 30px;
       margin-bottom: 5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Contenedor de la tabla y el feedback */
+    .form-main-area {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .contactanos-gif {
       width: 300px;
       height: auto;
-      flex-shrink: 0; /* Evita que el flexbox aplaste la imagen */
     }
 
+    /* --- ESTILOS DE LA TABLA (INTACTOS) --- */
     table {
       border: 10px solid white;
       background-color: rgb(0, 128, 255);
       padding: 10px;
-      margin: 0 !important; /* Eliminamos el auto que empujaba la tabla */
+      margin: 0 !important;
+      width: auto;
     }
-    /* FIN CSS CORREGIDO */
 
     .btn-reset {
       background-color: tomato;
@@ -176,103 +195,205 @@ import Layout from '../layouts/Layout.astro';
       font-size: 20px;
       cursor: pointer;
     }
-    
+
     input,
     textarea {
       border: 2px dashed green;
       background-color: lightblue;
-      font-family: Comic Sans MS, cursive;
+      font-family:
+        Comic Sans MS,
+        cursive;
       font-size: 20px;
+      box-sizing: border-box;
     }
+
     input[type="submit"] {
       background-color: lightblue;
-      color: white;
       font-weight: bold;
       font-size: 18px;
       border: 10px ridge white;
       color: navy;
       cursor: pointer;
-      font-family: Comic Sans MS, cursive;
-      margin-top: 10px;
+      font-family:
+        Comic Sans MS,
+        cursive;
     }
+
     td {
       color: white;
       font-weight: bold;
       padding: 6px;
     }
+
     marquee {
       color: yellow;
       text-shadow: blue 0 0 10px;
       font-size: 2rem;
       font-family: Arial, Helvetica, sans-serif;
-    }
-    #notificacion {
-      display: none;
-      text-align: center;
-      font-family: Comic Sans MS, cursive;
-      font-weight: bold;
-      font-size: 24px;
-      color: #00ff00;
-      background-color: #000;
-      border: 5px dashed #ffff00;
-      padding: 15px;
-      margin: 20px auto;
-      width: 80%;
-      z-index: 100000000;
-      position: relative;
+      width: 90%;
+      max-width: 800px;
     }
 
-    /* Bonus para móviles: en pantallas pequeñas los apilamos para que no se deforme */
-    @media (max-width: 600px) {
+    /* --- ESTILOS DE NOTIFICACIÓN ORIGINALES (RESTAURADOS) --- */
+    #notificacion {
+      display: none; /* Oculto por defecto */
+      text-align: center;
+      font-family:
+        Comic Sans MS,
+        cursive;
+      font-weight: bold;
+      font-size: 24px;
+      color: #00ff00; /* Verde */
+      background-color: #000; /* Negro */
+      border: 5px dashed #ffff00; /* Amarillo Dashed */
+      padding: 20px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 500px; /* Para que no se estire demasiado */
+    }
+
+    #notificacion img {
+      display: block;
+      margin: 15px auto 0 auto;
+      max-width: 180px;
+      height: auto;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    /* --- RESPONSIVE ORIGINAL (AJUSTADO PARA GRID) --- */
+    @media (max-width: 900px) {
+      .contact-content {
+        margin-top: 2rem;
+      }
+
+      #contactanos .intro-p {
+        font-size: 1.2rem;
+      }
+
+      marquee {
+        font-size: 1.5rem;
+      }
+
+      .intro-p,
+      marquee {
+        width: 100%;
+      }
+
       #mi-formulario {
-        flex-direction: column !important;
-        gap: 15px;
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 20px;
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+
+      .contactanos-gif {
+        width: 120px !important;
+        grid-row: 2; /* Movemos el GIF abajo en móvil */
+      }
+
+      .form-main-area {
+        grid-row: 1; /* Movemos la tabla/feedback arriba en móvil */
+        width: 100%;
+      }
+
+      table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+        border-width: 5px;
+      }
+
+      tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+        width: 100%;
+      }
+
+      td {
+        padding: 4px 0;
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+
+      .label-cell {
+        text-align: left;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-group input {
+        width: 100% !important;
       }
     }
   </style>
 
-<script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  
-  <script is:inline>
-    function setupContactForm() {
-      if (typeof emailjs !== 'undefined') {
-        emailjs.init("_CJbV2ZxKfbeRnBIS");
-      } else {
-        console.error("EmailJS not found");
-        return;
-      }
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+  ></script>
 
+  <script is:inline>
+    function setupForm() {
       const formulario = document.getElementById("mi-formulario");
       const btnEnviar = document.getElementById("btn-enviar");
       const notificacion = document.getElementById("notificacion");
+      const tablaContenedor = document.getElementById("tabla-contenedor");
 
-      if (!formulario || !btnEnviar || !notificacion) return;
+      if (!formulario || !btnEnviar || !notificacion || !tablaContenedor)
+        return;
+
+      if (typeof emailjs !== "undefined") {
+        emailjs.init("zsuN7AMPazdnwsxxR");
+      }
 
       formulario.addEventListener("submit", function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Frena la recarga nativa
 
         btnEnviar.value = "Enviando...";
         btnEnviar.disabled = true;
 
-        const serviceID = "service_a210qxc";
-        const templateID = "template_4gsodck";
+        const serviceID = "service_w3hbv6u";
+        const templateID = "template_anzwd3g";
 
         emailjs.sendForm(serviceID, templateID, this).then(
           () => {
             btnEnviar.value = "👉 ENVIAR YA 👈";
             btnEnviar.disabled = false;
-            formulario.style.display = "none";
-            notificacion.style.display = "block";
+
+            // --- LA SUSTITUCIÓN ---
+            tablaContenedor.style.display = "none"; // Ocultamos la tabla
+            notificacion.style.display = "block"; // Mostramos el feedback (negro/verde)
           },
           (err) => {
             btnEnviar.value = "👉 ENVIAR YA 👈";
             btnEnviar.disabled = false;
             alert("Vaya... Hubo un error: " + JSON.stringify(err));
-          }
+          },
         );
       });
     }
 
-    setupContactForm();
+    // Compatibilidad con Astro View Transitions
+    document.addEventListener("DOMContentLoaded", setupForm);
+    document.addEventListener("astro:page-load", setupForm);
   </script>
 </Layout>

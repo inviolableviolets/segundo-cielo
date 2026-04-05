@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Referencias | Segundo Cielo Dossier">
@@ -22,8 +22,8 @@ import Layout from '../layouts/Layout.astro';
     <div class="intro-container">
       <p>
         Las referencias se apoyan en un imaginario de terror ligado a las
-        primeras tecnologías digitales y a su forma primitiva de habitar
-        lo cotidiano. Películas como
+        primeras tecnologías digitales y a su forma primitiva de habitar lo
+        cotidiano. Películas como
         <span
           class="pelicula"
           data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1EPUf0Jghgq6HV6IXBEjwhZlrdRVFjI2zmg&s"
@@ -40,9 +40,8 @@ import Layout from '../layouts/Layout.astro';
           data-src="https://www.onderhond.com/thumbs/img/posters/300xauto/one-missed-call-2003.webp"
           >One Missed Call</span
         >
-        entienden lo tecnológico —teléfonos, ordenadores, internet— no
-        como meros dispositivos, sino como canales a través de los cuales
-        algo se filtra y permanece.
+        entienden lo tecnológico —teléfonos, ordenadores, internet— no como meros
+        dispositivos, sino como canales a través de los cuales algo se filtra y permanece.
       </p>
     </div>
     <img
@@ -52,20 +51,20 @@ import Layout from '../layouts/Layout.astro';
       alt=""
     />
     <p class="p2">
-      Esa misma lógica atraviesa el tipo de entornos digitales en los que
-      se inspira el cortometraje: páginas web de estética rudimentaria,
+      Esa misma lógica atraviesa el tipo de entornos digitales en los que se
+      inspira el cortometraje: páginas web de estética rudimentaria,
       fragmentadas, con discursos extraños, mezcla de espiritualidad,
-      conspiración y estructuras que recuerdan a dinámicas sectarias.
-      Espacios que, por su propia forma, invitan a quedarse, a hacer clic,
-      a seguir profundizando sin una dirección clara, generando recorridos
-      que se asemejan a un “rabbithole”. En este sentido, el trabajo de
+      conspiración y estructuras que recuerdan a dinámicas sectarias. Espacios
+      que, por su propia forma, invitan a quedarse, a hacer clic, a seguir
+      profundizando sin una dirección clara, generando recorridos que se
+      asemejan a un “rabbithole”. En este sentido, el trabajo de
       <span
         class="pelicula"
         data-src="https://m.media-amazon.com/images/M/MV5BNDZhMTlkOWItZmI2ZC00MmNmLWI4ZTctNmNmZmIwNTYyYzQ4XkEyXkFqcGc@._V1_.jpg"
         >We’re All Going to the World’s Fair</span
       >
-      resulta especialmente cercano por su forma de abordar la relación
-      entre identidad, aislamiento y pantalla.
+      resulta especialmente cercano por su forma de abordar la relación entre identidad,
+      aislamiento y pantalla.
     </p>
 
     <img
@@ -76,10 +75,9 @@ import Layout from '../layouts/Layout.astro';
     />
 
     <p>
-      En conjunto, estas referencias construyen un tono donde la
-      tecnología no es solo un medio, sino un espacio cargado de
-      presencia, capaz de absorber, condicionar y transformar la
-      experiencia de los personajes desde dentro.
+      En conjunto, estas referencias construyen un tono donde la tecnología no
+      es solo un medio, sino un espacio cargado de presencia, capaz de absorber,
+      condicionar y transformar la experiencia de los personajes desde dentro.
     </p>
 
     <div class="ref-grid">
@@ -114,15 +112,15 @@ import Layout from '../layouts/Layout.astro';
       margin-top: 4rem;
     }
 
-    p{
+    p {
       font-size: 1.5rem;
       background: rebeccapurple;
     }
 
-    .p2{
+    .p2 {
       font-family: Arial, Helvetica, sans-serif;
     }
-    
+
     #dvd-container {
       position: fixed;
       width: 150px;
@@ -136,7 +134,14 @@ import Layout from '../layouts/Layout.astro';
       left: 0;
       opacity: 0;
       bottom: 0;
-      background-color: #ffff00; 
+      background-color: #ffff00;
+    }
+
+    @media (max-width: 900px) {
+      #dvd-container {
+        width: 75px;
+        height: 75px;
+      }
     }
 
     #dvd-container img {
@@ -203,13 +208,19 @@ import Layout from '../layouts/Layout.astro';
       let speedX = 3;
       let speedY = 3;
 
-      const colores = ["#ff00ff", "#00ffff", "#ffff00", "#00ff00", "#ff0000", "#0000ff"];
+      const colores = [
+        "#ff00ff",
+        "#00ffff",
+        "#ffff00",
+        "#00ff00",
+        "#ff0000",
+        "#0000ff",
+      ];
 
       function moverDVD() {
-        if (!document.getElementById("dvd-container")) return; 
+        if (!document.getElementById("dvd-container")) return;
 
-      dvd!.style.opacity = "1";
-        
+        dvd!.style.opacity = "1";
 
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -218,7 +229,7 @@ import Layout from '../layouts/Layout.astro';
         posY += speedY;
 
         if (posX + dvdWidth >= screenWidth) {
-          posX = screenWidth - dvdWidth; 
+          posX = screenWidth - dvdWidth;
           speedX = -speedX;
           cambiarColor();
         } else if (posX <= 0) {
@@ -228,7 +239,7 @@ import Layout from '../layouts/Layout.astro';
         }
 
         if (posY + dvdHeight >= screenHeight) {
-          posY = screenHeight - dvdHeight; 
+          posY = screenHeight - dvdHeight;
           speedY = -speedY;
           cambiarColor();
         } else if (posY <= 0) {
@@ -244,21 +255,24 @@ import Layout from '../layouts/Layout.astro';
       }
 
       function cambiarColor() {
-        const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
+        const colorAleatorio =
+          colores[Math.floor(Math.random() * colores.length)];
         dvd!.style.backgroundColor = colorAleatorio;
       }
 
       moverDVD();
 
       // 2. POSTER HOVER
-      const posterFlotante = document.getElementById("poster-flotante") as HTMLImageElement;
+      const posterFlotante = document.getElementById(
+        "poster-flotante",
+      ) as HTMLImageElement;
       const peliculas = document.querySelectorAll(".pelicula");
 
       if (!posterFlotante) return;
 
       peliculas.forEach((peli) => {
         peli.addEventListener("mouseenter", () => {
-          const rutaImagen = peli.getAttribute('data-src') || '';
+          const rutaImagen = peli.getAttribute("data-src") || "";
           posterFlotante.src = rutaImagen;
           posterFlotante.style.display = "block";
         });
@@ -277,6 +291,6 @@ import Layout from '../layouts/Layout.astro';
     }
 
     setupReferenciaScripts();
-    document.addEventListener('astro:after-swap', setupReferenciaScripts);
+    document.addEventListener("astro:after-swap", setupReferenciaScripts);
   </script>
 </Layout>

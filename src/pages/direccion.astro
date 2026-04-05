@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Dirección y guion | Segundo Cielo Dossier">
+<Layout title="Directores | Segundo Cielo Dossier">
   <section id="intro">
     <a href="/" class="h1">
       <hgroup>
@@ -11,90 +11,258 @@ import Layout from '../layouts/Layout.astro';
     </a>
 
     <div class="directores-container">
-      <details class="director-details">
-        <summary class="director-summary">
-          [+] Director: 𝓛𝓾𝓬𝓪𝓼 𝓥𝓲𝓭𝓪𝓾𝓻
-        </summary>
-        <div class="director-content">
-          <p>
-            Lucas, tras forjarse en entornos rígidos y jerárquicos,
-            canalizó su impulso creativo en una puesta en escena marcada
-            por la disciplina y el control absoluto. Obsesionado con la
-            unidad, el orden y cierta épica sobria de raíz
-            tradicionalista, su mirada artística tiende a composiciones
-            cerradas, casi marciales, donde nada queda al azar. Una vieja
-            herida que le dejó con un solo testículo, un detalle que
-            muchos interpretan como metáfora involuntaria de su estilo:
-            crudo y sin margen para lo superfluo.
-          </p>
-        </div>
-      </details>
+      <div class="director-box">
+        <details class="director-details">
+          <summary class="director-summary">
+            <img
+              src="/assets/lucas.jpeg"
+              alt="Lucas Vidaur"
+              class="director-img"
+            />
+            <span class="director-name">[+] 𝓛𝓾𝓬𝓪𝓼 𝓥𝓲𝓭𝓪𝓾𝓻</span>
+          </summary>
+          <div class="director-content">
+            <p>
+              Autor (“El Tejido de las Cosas” Libros Walden) y compositor para
+              artistas como Amaia y Juanjo Bona. Amante del cine de <span
+                class="terror">terror</span
+              > desde que tiene uso de razón.
+            </p>
+          </div>
+        </details>
+      </div>
 
-      <details class="director-details">
-        <summary class="director-summary">
-          [+] Director: 𝓓𝓪𝓷𝓲 𝓣𝓮𝔃𝓵𝓪
-        </summary>
-        <div class="director-content">
-          <p>
-            Daniel es un realizador frustrado de origen austriaco que,
-            tras ser rechazado por las academias de bellas artes en su
-            ejventud, volcó toda su fijación estética en la puesta en
-            escena de masas. Obsesionado con el orden, la pureza visual y
-            el misticismo de las antiguas leyendas centroeuropeas, su
-            visión artística se inclina siempre al impacto del bloque
-            monumental y a la propaganda emocional.
-          </p>
-        </div>
-      </details>
+      <div class="director-box">
+        <details class="director-details">
+          <summary class="director-summary">
+            <img
+              src="https://blob.gifcities.org/gifcities/CJYM6MDMPAYYBXOYVDJQEQFJL34XOTOM.gif"
+              alt="Dani Tezla"
+              class="director-img"
+            />
+            <span class="director-name">[+] 𝓓𝓪𝓷𝓲 𝓣𝓮𝔃𝓵𝓪</span>
+          </summary>
+          <div class="director-content">
+            <p>
+              Investigador pasado al audiovisual. Ha centrado los últimos 3 años
+              en dirigir videoclips para los principales sellos y bandas
+              estatales desde Biznaga a la Albany. En 2026 está preparando su
+              paso a la ficción y el documental a través de formatos analógicos.
+            </p>
+          </div>
+        </details>
+      </div>
     </div>
-    <img
-      src="/assets/direccion.jpg"
-      alt="Dirección"
-      class="director-img"
-    />
   </section>
+
+  <div id="jumpscare-overlay">
+    <img src="/assets/face.jpg" alt="SUSTO" />
+  </div>
 </Layout>
 
 <style>
   #intro {
     position: relative;
   }
+
   .directores-container {
     margin-top: 3rem;
+    display: flex;
     font-family: "Times New Roman", serif;
+    gap: 1rem;
+    align-items: flex-start;
   }
 
-  .director-details {
-    background-color: #000080;
+  .director-box {
+    flex: 1;
+    background-color: #000;
     border: 2px solid #ffff00;
     padding: 10px;
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer !important;
+  }
+
+  .director-details {
+    width: 100%;
+    flex: 1;
+    cursor: pointer;
   }
 
   .director-summary {
     color: #00ffff;
     font-size: 22px;
     font-weight: bold;
-    cursor: pointer;
     outline: none;
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .director-name {
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+
+  .director-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1;
+    border: 1px solid #ffff00;
+    cursor: pointer;
   }
 
   .director-content {
-    background-color: #111;
+    background-color: darkblue;
     padding: 15px;
     margin-top: 10px;
     border: 3px dashed #ff00ff;
     font-family: Arial, sans-serif;
     font-size: 1.5rem;
     font-style: italic;
+    color: #fff;
+    cursor: default;
   }
 
   .director-content p {
     margin: 0;
   }
 
-  .director-img {
-    width: 100%;
-    margin-top: 2rem;
+  /* --- SPAN TERROR --- */
+  .terror {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #ff00ff;
+    font-weight: bold;
+    cursor: help;
+  }
+
+  /* --- MODAL DE JUMPSCARE (FIXED Y CENTRADO) --- */
+  #jumpscare-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Casi opaco */
+    z-index: 999999;
+
+    /* Centrado perfecto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Invisible por defecto */
+    opacity: 0;
+    pointer-events: none;
+
+    /* Transición instantánea al activarse */
+    transition: opacity 0.05s ease-in;
+  }
+
+  /* Se activa con JS */
+  #jumpscare-overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* Permite que el click dentro lo cierre */
+  }
+
+  #jumpscare-overlay img {
+    width: 90vw; /* Exactamente el 90% del ancho de pantalla */
+    height: auto;
+    max-height: 90vh; /* Para que no desborde en vertical */
+    object-fit: contain;
+    /* BORDE ROJO ELIMINADO 🫡 */
+    animation: shake 0.1s infinite;
+  }
+
+  /* Vibración agresiva */
+  @keyframes shake {
+    0% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+    10% {
+      transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+      transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+      transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+      transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+      transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+      transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+      transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+      transform: translate(1px, -2px) rotate(-1deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .directores-container {
+      flex-direction: column;
+    }
   }
 </style>
+
+<script>
+  function setupJumpscare() {
+    const terrorSpan = document.querySelector(
+      ".terror",
+    ) as HTMLSpanElement | null;
+    const overlay = document.getElementById(
+      "jumpscare-overlay",
+    ) as HTMLDivElement | null;
+
+    if (!terrorSpan || !overlay) return;
+
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    function triggerScream() {
+      // Evitamos solapamientos si el usuario spamea el hover/click
+      clearTimeout(timeoutId);
+
+      // Mostrar modal
+      overlay!.classList.add("active");
+
+      // Ocultar modal a los 1000ms (1 segundo exacto)
+      timeoutId = setTimeout(() => {
+        overlay!.classList.remove("active");
+      }, 1000);
+    }
+
+    // 1. Disparar al hacer HOVER en el texto
+    terrorSpan.addEventListener("mouseenter", triggerScream);
+
+    // 2. Disparar al hacer CLICK en el texto (para móviles)
+    terrorSpan.addEventListener("click", triggerScream);
+
+    // 3. Cerrar AL INSTANTE si el usuario hace click en el propio overlay
+    overlay.addEventListener("click", () => {
+      clearTimeout(timeoutId);
+      overlay.classList.remove("active");
+    });
+  }
+
+  // Correr lógica en Astro
+  setupJumpscare();
+  document.addEventListener("astro:after-swap", setupJumpscare);
+</script>

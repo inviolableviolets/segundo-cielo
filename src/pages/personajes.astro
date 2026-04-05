@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Personajes | Segundo Cielo Dossier">
@@ -12,58 +12,63 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="personajes-container">
       <a href="/lucia" class="lucia-img">
-        <p>conoce a <span>Lucía</span></p>
-        <img src="/assets/lucia.png" alt="" />
+        <p>conoce a <br /><span>Lucía</span></p>
+        <img src="/assets/lucia.jpeg" alt="Personaje Lucía" />
       </a>
       <a href="/marco" class="marco-img">
-        <p>conoce a <span>Marco</span></p>
-        <img src="/assets/marco.png" alt="" />
+        <p>conoce a <br /><span>Marco</span></p>
+        <img src="/assets/marco.jpeg" alt="Personaje Marco" />
       </a>
     </div>
   </section>
 </Layout>
+
 <style>
   .personajes-container {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    padding: 1rem;
   }
-  
+
   .lucia-img,
   .marco-img {
     position: relative;
     margin: 2rem;
     text-decoration: none;
-    /* transition: transform 0.2s; */
+    transition: transform 0.2s ease;
   }
 
   .lucia-img img,
   .marco-img img {
     height: 50vh;
+    object-fit: cover;
   }
 
   .lucia-img:hover,
   .marco-img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   .lucia-img p,
   .marco-img p {
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-transform: uppercase;
     font-family: var(--font-sans);
     font-style: italic;
     width: 100%;
-    padding-left: 2rem;
+    text-align: center;
     background-image: linear-gradient(var(--color-blue), var(--color-white));
     color: transparent;
     -webkit-text-stroke: 2px var(--color-blue);
     -webkit-background-clip: text;
     background-clip: text;
     font-size: 2rem;
+    z-index: 2;
+    line-height: 1.1; /* Ajustamos el interlineado para que no se separen demasiado */
   }
 
   .marco-img p {
@@ -74,5 +79,40 @@ import Layout from '../layouts/Layout.astro';
   .marco-img span {
     font-size: 2.8rem !important;
     font-style: normal;
+    display: inline-block;
+    margin-top: 0.2rem;
+  }
+
+  /* --- ADAPTACIÓN MÓVIL (< 900px) --- */
+  @media (max-width: 900px) {
+    .personajes-container {
+      flex-direction: column !important;
+      align-items: center;
+      gap: 0;
+    }
+
+    .lucia-img,
+    .marco-img {
+      margin: 1rem 0;
+      width: 80%;
+      max-width: 320px;
+    }
+
+    .lucia-img img,
+    .marco-img img {
+      height: auto;
+      width: 100%;
+    }
+
+    .lucia-img p,
+    .marco-img p {
+      font-size: 1.6rem; /* Bajamos el tamaño base */
+      top: 82%; /* Lo subimos un poco para que no quede colgando fuera de la foto */
+    }
+
+    .lucia-img span,
+    .marco-img span {
+      font-size: 2.3rem !important; /* El nombre sigue siendo imponente pero en su sitio */
+    }
   }
 </style>

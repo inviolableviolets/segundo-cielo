@@ -1,32 +1,35 @@
 ---
-import Sidebar from '../components/Sidebar.astro';
-import Modal from '../components/Modal.astro';
-import '../styles/global.css';
+import Sidebar from "../components/Sidebar.astro";
+import Modal from "../components/Modal.astro";
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
 
 interface Props {
-	title?: string;
+  title?: string;
   showModalname?: boolean;
 }
 
 const { title = "Segundo Cielo Dossier" } = Astro.props;
 const { pathname } = Astro.url;
-const isIndex = pathname === "/" || pathname === "/index" || pathname === "/index.html";
+const isIndex =
+  pathname === "/" || pathname === "/index" || pathname === "/index.html";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Segundo Cielo Dossier" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Segundo Cielo Dossier" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body>
     {isIndex && <Modal />}
-    
+
     <div class="screen"></div>
 
     <Sidebar />
@@ -36,7 +39,154 @@ const isIndex = pathname === "/" || pathname === "/index" || pathname === "/inde
         <slot />
       </div>
     </main>
-	</body>
+
+    <audio id="musica-fondo" src="/assets/ambient.mp3" loop transition:persist
+    ></audio>
+
+    <div id="container-molesto">
+      <button id="btn-molesto" title="⚠️">
+        <img
+          src="https://blob.gifcities.org/gifcities/ETUJ2WDHAFWGNZHYOAXK3LO3AXUMUNAC.gif"
+          alt="Sonido"
+        />
+      </button>
+
+      <div id="ghost-jumpscare">
+        <img
+          src="https://blob.gifcities.org/gifcities/XG4KWC2OQVJZM2DJAY7TG74XUZUMJMI7.gif"
+          alt="¡BUH!"
+          class="molesto-face"
+        />
+      </div>
+    </div>
+
+    <script>
+      function setupAudioTrol() {
+        const btnMolesto = document.getElementById(
+          "btn-molesto",
+        ) as HTMLButtonElement | null;
+        const audioOriginal = document.getElementById(
+          "musica-fondo",
+        ) as HTMLAudioElement | null;
+        const ghostJumpscare = document.getElementById(
+          "ghost-jumpscare",
+        ) as HTMLDivElement | null;
+
+        if (!btnMolesto || !audioOriginal || !ghostJumpscare) return;
+
+        // Inicializamos datos en el audio persistente si es la primera vez
+        if (!audioOriginal.dataset.inicializado) {
+          audioOriginal.volume = 0.1;
+          audioOriginal.dataset.distorsion = "0";
+          audioOriginal.dataset.clicks = "0";
+          audioOriginal.dataset.bloqueado = "false";
+          audioOriginal.dataset.inicializado = "true";
+        }
+
+        // --- COMPROBACIÓN PERSISTENTE TRAS NAVEGACIÓN ---
+        if (audioOriginal.dataset.bloqueado === "true") {
+          btnMolesto.style.opacity = "0.5";
+          btnMolesto.style.filter = "invert(1) blur(1px)";
+          btnMolesto.style.pointerEvents = "none";
+          btnMolesto.style.cursor = "default";
+          return;
+        }
+        // ------------------------------------------------
+
+        function makeDistortionCurve(amount: number) {
+          const k = amount;
+          const n_samples = 44100;
+          const curve = new Float32Array(n_samples);
+          const deg = Math.PI / 180;
+
+          for (let i = 0; i < n_samples; ++i) {
+            const x = (i * 2) / n_samples - 1;
+            curve[i] = ((3 + k) * x * 20 * deg) / (Math.PI + k * Math.abs(x));
+          }
+          return curve;
+        }
+
+        btnMolesto.replaceWith(btnMolesto.cloneNode(true));
+        const activeBtn = document.getElementById(
+          "btn-molesto",
+        ) as HTMLButtonElement;
+
+        activeBtn.addEventListener("click", () => {
+          let clicks = parseInt(audioOriginal.dataset.clicks || "0");
+          clicks++;
+          audioOriginal.dataset.clicks = clicks.toString();
+
+          // --- SE ACTIVA EL BLOQUEO (¡AHORA A LOS 5 CLICKS!) ---
+          if (clicks >= 5) {
+            audioOriginal.pause();
+            audioOriginal.volume = 0;
+            audioOriginal.dataset.bloqueado = "true";
+
+            const clones = document.querySelectorAll(".clon-trol");
+            clones.forEach((clon) => clon.remove());
+
+            activeBtn.style.opacity = "0.5";
+            activeBtn.style.filter = "invert(1) blur(2px)";
+            activeBtn.style.pointerEvents = "none";
+            activeBtn.style.cursor = "default";
+
+            ghostJumpscare.classList.add("active");
+
+            setTimeout(() => {
+              ghostJumpscare.classList.add("fading");
+              setTimeout(() => {
+                ghostJumpscare.classList.remove("active", "fading");
+              }, 1500);
+            }, 2000);
+
+            return;
+          }
+          // --- FIN DEL BLOQUEO ---
+
+          if (audioOriginal.volume < 1.0) {
+            audioOriginal.volume = Math.min(1.0, audioOriginal.volume + 0.3);
+          }
+
+          let currentDist = parseFloat(audioOriginal.dataset.distorsion || "0");
+          currentDist = currentDist === 0 ? 50 : currentDist * 2.5;
+          audioOriginal.dataset.distorsion = currentDist.toString();
+
+          const nuevoAudio = audioOriginal.cloneNode(true) as HTMLAudioElement;
+          nuevoAudio.loop = false;
+          nuevoAudio.removeAttribute("transition:persist");
+          nuevoAudio.classList.add("clon-trol");
+          nuevoAudio.volume = audioOriginal.volume;
+
+          document.body.appendChild(nuevoAudio);
+
+          nuevoAudio.addEventListener("loadedmetadata", () => {
+            const duracionTotal = nuevoAudio.duration;
+            const tiempoRandom = Math.random() * duracionTotal;
+            nuevoAudio.currentTime = tiempoRandom;
+
+            const audioCtx = new (
+              window.AudioContext || (window as any).webkitAudioContext
+            )();
+            const source = audioCtx.createMediaElementSource(nuevoAudio);
+            const distortion = audioCtx.createWaveShaper();
+
+            distortion.curve = makeDistortionCurve(currentDist);
+            distortion.oversample = "4x";
+
+            source.connect(distortion);
+            distortion.connect(audioCtx.destination);
+
+            nuevoAudio.play();
+          });
+
+          nuevoAudio.onended = () => nuevoAudio.remove();
+        });
+      }
+
+      setupAudioTrol();
+      document.addEventListener("astro:after-swap", setupAudioTrol);
+    </script>
+  </body>
 </html>
 
 <style is:global>
@@ -53,7 +203,7 @@ const isIndex = pathname === "/" || pathname === "/index" || pathname === "/inde
     pointer-events: none;
     opacity: 0.1;
   }
-  
+
   main {
     height: 100vh;
     overflow-y: scroll;
@@ -67,5 +217,88 @@ const isIndex = pathname === "/" || pathname === "/index" || pathname === "/inde
   .content {
     width: 65%;
     height: min-content;
+  }
+
+  @media (max-width: 900px) {
+    .content {
+      width: 90%;
+    }
+  }
+
+  /* --- ESTILOS DEL SINTETIZADOR TROL --- */
+  #container-molesto {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999998;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  #btn-molesto {
+    pointer-events: auto;
+    cursor: pointer;
+    filter: invert(1);
+    background: transparent;
+    border: none;
+    will-change: transform, opacity, filter;
+    transition:
+      opacity 0.3s ease,
+      filter 0.3s ease;
+    z-index: 1;
+  }
+
+  #btn-molesto img {
+    max-width: 50px;
+    height: auto;
+  }
+
+  #btn-molesto:active {
+    transform: translate(2px, 2px);
+  }
+
+  #ghost-jumpscare {
+    display: none;
+    width: 50px;
+    height: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 1.5s ease-out,
+      transform 1.5s ease-out;
+    position: absolute;
+    top: 0;
+    right: 2rem; /* Lo mantengo como lo habías dejado */
+    z-index: 2;
+  }
+
+  #ghost-jumpscare.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  #ghost-jumpscare.fading {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+
+  @media (max-width: 600px) {
+    #container-molesto,
+    #btn-molesto img,
+    #ghost-jumpscare {
+      width: 35px;
+      height: 35px;
+    }
+    #container-molesto {
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  .molesto-face {
+    scale: 1.4;
   }
 </style>

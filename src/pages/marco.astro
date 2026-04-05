@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Marco | Segundo Cielo Dossier">
@@ -17,31 +17,36 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="character-bio">
       <p class="first-p">
-        <span>Marco</span> se encuentra es una situación difícil de
-        navegar. Quiere ser el apoyo que Lucía necesita pero no tiene las
-        herramientas para hacerlo. A su vez él también necesita ser
-        escuchado y cuidado y es evidente que su pareja no va a cumplir
-        esa función.
+        <span>Marco</span> se encuentra es una situación difícil de navegar. Quiere
+        ser el apoyo que Lucía necesita pero no tiene las herramientas para hacerlo.
+        A su vez él también necesita ser escuchado y cuidado y es evidente que su
+        pareja no va a cumplir esa función.
       </p>
 
       <p class="second-p">
-        Intenta aparentar normalidad, mantener la rutina y esperar a que
-        la vida se ordene con el tiempo. Aún así,
-        <span class="final-p2">
-          la sombra de una culpa le sigue de cerca.</span
-        >
+        Intenta aparentar normalidad, mantener la rutina y esperar a que la vida
+        se ordene con el tiempo. Aún así,
+        <span class="final-p2"> la sombra de una culpa le sigue de cerca.</span>
       </p>
     </div>
   </section>
 </Layout>
 
 <style>
-.lucia-gif{
-  width: 50%;
-  display: flex;
-  justify-self: center;
-  margin-top: 2rem;
-}
+  .lucia-gif {
+    width: 50%;
+    display: flex;
+    justify-self: center;
+    margin-top: 5rem;
+  }
+
+  @media (max-width: 900px) {
+    .lucia-gif {
+      width: 80%;
+      margin-top: 2rem;
+      margin-bottom: -1rem;
+    }
+  }
 
   .character-bio p {
     color: var(--color-black);
@@ -70,7 +75,6 @@ import Layout from '../layouts/Layout.astro';
     margin: 1rem 0;
     font-family: var(--font-sans);
     margin-bottom: 5rem;
-
   }
   .third-p {
     margin-bottom: 5rem;

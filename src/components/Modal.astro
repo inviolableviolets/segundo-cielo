@@ -1,4 +1,5 @@
 ---
+import GuardaMovil from "./GuardaMovil.astro"; // Asegúrate de que la ruta sea correcta
 ---
 
 <div class="modal">
@@ -8,31 +9,54 @@
     class="img-modal"
   />
 
-  <p>SEGUNDO CIELO</p>
-  <button id="close-modal">LLEVAME ALLi</button>
-  <div class="cross">✟</div>
+  <div
+    id="modal-base-content"
+    style="display: flex; flex-direction: column; align-items: center;"
+  >
+    <p>SEGUNDO CIELO</p>
+    <button id="close-modal">LLEVAME ALLi</button>
+    <div class="cross">✟</div>
+  </div>
+
+  <GuardaMovil />
 </div>
 
-<script>
+<script is:inline>
   function setupModal() {
-    const modal = document.querySelector(".modal") as HTMLElement;
+    const modal = document.querySelector(".modal");
     const button = document.getElementById("close-modal");
+    // Referencias nuevas para la guarda
+    const mainContent = document.getElementById("modal-base-content");
+    const guarda = document.getElementById("guarda-movil");
 
     if (!modal || !button) return;
 
-    // Only show if not seen before in this session or always for testing if preferred.
-    // For now, let's keep the user's logic but ensure it's visible if needed.
-    if (!localStorage.getItem("modalVisto")) {
-      modal.style.display = "flex";
-      // localStorage.setItem("modalVisto", "true"); // Maybe keep it off during dev?
+    if (window.modalYaVistoEnEstaNavegacion) {
+      modal.style.display = "none";
+      modal.style.visibility = "hidden";
+      return;
     } else {
-      // If we want it to show every time during development, we can comment out the next line.
-      modal.style.display = "flex"; 
+      modal.style.display = "flex";
     }
 
-    button.addEventListener("click", function () {
-      localStorage.setItem("modalVisto", "true");
-      modal.style.transition = "transform 0.4s cubic-bezier(0.36, 0, 0.66, -0.56)";
+    button.replaceWith(button.cloneNode(true));
+    const activeButton = document.getElementById("close-modal");
+
+    // Función que contiene tu lógica de cierre original
+    function ejecutarCierreOriginal() {
+      window.modalYaVistoEnEstaNavegacion = true;
+
+      const audioPrincipal = document.getElementById("musica-fondo");
+      if (audioPrincipal) {
+        audioPrincipal
+          .play()
+          .catch((err) =>
+            console.log("El navegador bloqueó el autoplay:", err),
+          );
+      }
+
+      modal.style.transition =
+        "transform 0.4s cubic-bezier(0.36, 0, 0.66, -0.56)";
       modal.style.transformOrigin = "center center";
       modal.style.transform = "scale(0)";
       modal.style.pointerEvents = "none";
@@ -43,16 +67,35 @@
           modal.style.visibility = "hidden";
           modal.style.display = "none";
         },
-        { once: true }
+        { once: true },
       );
+    }
+
+    activeButton?.addEventListener("click", function () {
+      // SI ES MÓVIL: Mostramos la guarda y NO cerramos todavía
+      if (window.innerWidth < 900) {
+        mainContent.style.display = "none";
+        guarda.style.display = "flex";
+      } else {
+        // SI ES PC: Tu lógica de siempre
+        ejecutarCierreOriginal();
+      }
     });
+
+    // Escuchamos el botón final de la guarda para cerrar el modal de verdad
+    document
+      .getElementById("btn-final-guarda")
+      ?.addEventListener("click", () => {
+        ejecutarCierreOriginal();
+      });
   }
 
-  // Setup on initial load
   setupModal();
+  document.addEventListener("astro:after-swap", setupModal);
 </script>
 
 <style>
+  /* --- TU CSS ORIGINAL SIN TOCAR NI UNA LÍNEA --- */
   .modal {
     position: fixed;
     top: 0;
@@ -64,7 +107,8 @@
     width: 100vw;
     height: 100vh;
     font-size: 5rem;
-    z-index: 9999999999999; /* Higher than .screen (adding one more 9) */
+    z-index: 9999999999999;
+    background: #224482;
   }
 
   #close-modal {
@@ -77,6 +121,7 @@
     border-radius: 100%;
     font-size: 3rem;
     cursor: pointer;
+    color: white;
   }
 
   #close-modal:hover {
@@ -94,9 +139,10 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
     text-shadow: 0 0 10px white;
+    text-align: center;
   }
 
-  .modal div {
+  .modal div.cross {
     text-shadow: 0 0 10px white;
     font-size: 7rem;
     position: absolute;
@@ -120,13 +166,47 @@
 
   @keyframes heartbeat {
     0% {
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
     }
     50% {
-      transform: scale(1.2);
+      transform: translate(-50%, -50%) scale(1.2);
     }
     100% {
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  /* --- MEDIA QUERY --- */
+  @media (max-width: 900px) {
+    .modal p {
+      font-size: 4rem !important;
+    }
+
+    .modal #close-modal {
+      font-size: 1.5rem !important;
+      margin-top: 1rem !important;
+      letter-spacing: 3px !important;
+    }
+
+    .modal div.cross {
+      font-size: 3rem !important;
+      top: 70% !important;
+      left: 50% !important;
+      /* Cambiamos la animación por una versión que mantenga el tamaño pequeño en móvil */
+      animation: heartbeat-mobile 1s infinite !important;
+    }
+  }
+
+  /* Animación especial para móvil que no destruye el translate de la cruz */
+  @keyframes heartbeat-mobile {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 </style>

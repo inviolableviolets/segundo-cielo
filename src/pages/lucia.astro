@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Lucía | Segundo Cielo Dossier">
@@ -18,18 +18,17 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="character-bio">
       <p class="first-p">
-        No sabemos cómo era <span>Lucía</span> antes de su pérdida. La que
-        conocemos es callada, reflexiva y desconfiada. Dentro de ella hay
-        una rabia que no ha sabido canalizar y que, sobretodo con su
-        pareja, asoma cuando algo perturba su aislamiento.
+        No sabemos cómo era <span>Lucía</span> antes de su pérdida. La que conocemos
+        es callada, reflexiva y desconfiada. Dentro de ella hay una rabia que no ha
+        sabido canalizar y que, sobretodo con su pareja, asoma cuando algo perturba
+        su aislamiento.
       </p>
 
       <p class="second-p">
-        Podemos intuir que antes era ordenada, proactiva y energética y
-        podemos observar que ahora ha decidido romper con todo lo que la
-        mantenía a flote. Descuidando sus relaciones y a sí misma parece
-        estar, en cierta forma, buscando tocar fondo y quizás quedarse en
-        él.
+        Podemos intuir que antes era ordenada, proactiva y energética y podemos
+        observar que ahora ha decidido romper con todo lo que la mantenía a
+        flote. Descuidando sus relaciones y a sí misma parece estar, en cierta
+        forma, buscando tocar fondo y quizás quedarse en él.
       </p>
 
       <p class="third-p">
@@ -48,6 +47,14 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     justify-self: center;
     margin-top: 5rem;
+  }
+
+  @media (max-width: 900px) {
+    .lucia-gif {
+      width: 80%;
+      margin-top: 2rem;
+      margin-bottom: -3rem;
+    }
   }
 
   .character-bio p {

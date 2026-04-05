@@ -1,0 +1,402 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Talento | Segundo Cielo Dossier">
+  <section id="lucia">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+
+    <article>
+      <div class="pixelated-container">
+        <div class="webcore-header">
+          <h2 class="wordart">Carla Díaz</h2>
+          <h3 class="blink">⋆˚✿˖°como Lucía ツ✶</h3>
+        </div>
+
+        <div class="pixelated" id="paint-container">
+          <img
+            src="/assets/carla.png"
+            alt="Carla Díaz"
+            class="carla"
+            width="100%"
+          />
+          <canvas id="paint-canvas"></canvas>
+
+          <img
+            src="/assets/carla.jpg"
+            alt="Carla Díaz Pixelada"
+            class="carla-pixelated"
+            id="carla-borrable"
+            width="100%"
+            style="display: none;"
+          />
+        </div>
+
+        <img
+          src="https://blob.gifcities.org/gifcities/3XW6AOPV55D2QMTUKGCHBOCXNS4K23U3.gif"
+          class="gif-star"
+          alt=""
+        />
+      </div>
+
+      <div class="character-bio">
+        <div class="bio-header">
+          <img
+            src="https://blob.gifcities.org/gifcities/CQAZNQPMKMJP5MBKMTTRHT2JQEAMJ7DX.gif"
+            width="50"
+            alt=""
+          />
+          <span>FICHA</span>
+          <img
+            src="https://blob.gifcities.org/gifcities/CQAZNQPMKMJP5MBKMTTRHT2JQEAMJ7DX.gif"
+            width="50"
+            alt=""
+          />
+        </div>
+        <div class="bio-content">
+          <p class="first-p">
+            <ul>
+              <li>・❥・Élite</li>
+              <li>・❥・La Ruta</li>
+              <li>・❥・Delicious</li>
+              <li>・❥・Mañana es Hoy</li>
+              <li class="award">
+                <img
+                  src="https://blob.gifcities.org/gifcities/CTEYTZJZ4X74NKQUTDIYOKY2YUXW3CQC.gif"
+                  alt=""
+                  style="display: inline;"
+                /> Ganadora del premio a Mejor actriz en producción internacional
+                2025 por Unión de Actores y Actrices.
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <div class="footer-links">
+      <p class="click-here">Filmografía oficial</p>
+
+      <a
+        href="https://www.imdb.com/es-es/name/nm3718425/?ref_=mv_close"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="imdb-link spin-on-hover"
+      >
+        <img
+          src="https://static.wikia.nocookie.net/logopedia/images/3/35/IMDb_logo.svg/revision/latest/scale-to-width-down/300?cb=20240225070614"
+          alt="IMDb"
+          width="120"
+        />
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* --- CABECERA --- */
+  .webcore-header {
+    text-align: left;
+  }
+
+  .wordart {
+    font-family: fantasy, Impact, sans-serif;
+    font-size: 3rem;
+    background: linear-gradient(to bottom, #ff00ff 0%, #ffff00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(3px 3px 0px #000);
+    margin: 0;
+    margin-bottom: -2rem;
+    text-transform: uppercase;
+  }
+
+  h3.blink {
+    color: #ff00ff;
+    font-family: "Courier New", monospace;
+    font-size: 1.6rem;
+    font-weight: bold;
+    animation: blinker 1s linear infinite;
+    margin-top: 0.5rem;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* --- FRAME DE IMAGEN CON BORRADOR INTERACTIVO --- */
+  .pixelated-container {
+    width: 60%;
+    position: relative;
+    align-self: flex-start;
+  }
+
+  .pixelated {
+    display: block;
+    position: relative;
+    /* Cursor de goma de borrar clásico de Paint */
+    cursor: url("https://cur.cursors-4u.net/symbols/sym-1/sym4.png"), cell;
+    user-select: none;
+    width: 100%;
+  }
+
+  .pixelated .carla {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  #paint-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    touch-action: none;
+    cursor:
+      url("data:image/x-icon;base64,AAACAAEAICAAAAAAAACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAANDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAADQ0M//Ly8v8NDQz/////////////////////////////////////////////////////////////////DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0NDP/y8vL/8vLy/w0NDP////////////////////////////////////////////////////////////////8NDQz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAANDQz/8vLy//Ly8v/y8vL/DQ0M/////////////////////////////////////////////////////////////////w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAADQ0M//Ly8v/y8vL/8vLy//Ly8v8NDQz/////////////////////////////////////////////////////////////////DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAA0NDP/y8vL/8vLy//Ly8v/y8vL/8vLy/w0NDP////////////////////////////////////////////////////////////////8NDQz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQz/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/DQ0M/////////////////////////////////////////////////////////////////w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAADQ0M//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v8NDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8NDQz/DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0NDP/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/DQ0M//////////////////////////////////////////////////////////////////////8NDQz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQz/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy/w0NDP//////////////////////////////////////////////////////////////////////DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQ0M//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v8NDQz//////////////////////////////////////////////////////////////////////w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0NDP/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/DQ0M//////////////////////////////////////////////////////////////////////8NDQz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQz/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy/w0NDP//////////////////////////////////////////////////////////////////////DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQ0M//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v8NDQz//////////////////////////////////////////////////////////////////////w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQz/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/DQ0M//////////////////////////////////////////////////////////////////////8NDQz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0NDP/y8vL/8vLy//Ly8v/y8vL/8vLy/w0NDP//////////////////////////////////////////////////////////////////////DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQ0M//Ly8v/y8vL/8vLy//Ly8v8NDQz//////////////////////////////////////////////////////////////////////w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQz/8vLy//Ly8v/y8vL/DQ0M//////////////////////////////////////////////////////////////////////8AAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0NDP/y8vL/8vLy/w0NDP//////////////////////////////////////////////////////////////////////DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQ0M//Ly8v8NDQz//////////////////////////////////////////////////////////////////////w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQz/DQ0M//////////////////////////////////////////////////////////////////////8NDQz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//////////////////////////////////////////////////////////////////////DQ0M/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQ0M/w0NDP8NDQz/DQ0M/w0NDP8NDQz/DQ0M/w0NDP8AAAD/AAAA/w0NDP8NDQz/DQ0M/w0NDP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////////////////////////////////////////////AAH//gAB//wAAf/4AAH/8AAB/+AAAf/AAAH/gAAB/wAAAf4AAAP8AAAH+AAAD/AAAB/gAAA/4AAAf+AAAP/gAAH/4AAD/+AAB//gAA//4AAf/+AAP//gAH///////8="),
+      auto !important;
+  }
+
+  .gif-star {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 60px;
+    z-index: 10;
+  }
+
+  /* --- BIOGRAFÍA ESTILO WINDOWS 95 --- */
+  .character-bio {
+    color: var(--color-black);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    width: 40%;
+    background-color: white;
+    align-self: flex-start;
+    border: 5px solid #ff00ff;
+    box-shadow: 10px 10px 0px #ffff00;
+  }
+
+  .bio-header {
+    background: linear-gradient(90deg, darkblue, #00ffff);
+    color: white;
+    padding: 6px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .bio-content {
+    background: #fff;
+    font-size: 2rem;
+    margin: 3px;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .bio-content ul {
+    list-style-type: none;
+  }
+
+  .bio-content li {
+    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+    border-bottom: 3px dotted fuchsia;
+    padding-bottom: 5px;
+    color: blue;
+  }
+
+  .bio-content li.award {
+    color: white;
+    font-weight: bold;
+    background: purple;
+    border: 3px dashed yellow;
+    padding: 5px;
+  }
+
+  /* --- LAYOUT --- */
+  article {
+    display: flex;
+    margin-top: 1.5rem;
+    gap: 2rem;
+  }
+
+  /* --- FOOTER Y EFECTO GIRO COMPLETO 360 --- */
+  .footer-links {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 15px;
+    border-top: 3px double #ff00ff;
+  }
+
+  .click-here {
+    color: #ff00ff;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
+  }
+
+  .imdb-link {
+    display: inline-block;
+    background: #ffff00;
+    padding: 8px;
+    outline: 2px outset #000;
+    outline-offset: 5px;
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    height: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Preparamos la transición suave */
+    transition:
+      transform 0.8s ease-in-out,
+      border-style 0.1s;
+    backface-visibility: visible; /* Asegura que se vea durante todo el giro */
+  }
+
+  /* TRUCO AQUÍ: Al hacer hover, rota 360 grados completos */
+  .imdb-link:hover {
+    transform: rotateY(360deg);
+  }
+
+  .imdb-link:active {
+    border-style: inset;
+    transition: transform 0s; /* Evita que el giro se resetee al clickar */
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    article {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .pixelated-container,
+    .character-bio {
+      width: 100%;
+    }
+
+    .wordart {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Mismo script tipado para el borrador del Paint
+  function setupPaintEraser() {
+    const canvas = document.getElementById("paint-canvas") as HTMLCanvasElement;
+    const pixelatedImg = document.getElementById(
+      "carla-borrable",
+    ) as HTMLImageElement;
+
+    if (!canvas || !pixelatedImg) return;
+
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+    if (!ctx) return;
+
+    let isDrawing = false;
+
+    function initCanvas() {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (!rect) return;
+
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+
+      // Aplicamos los filtros azulados góticos directamente al Canvas
+      ctx.filter =
+        "grayscale(100%) sepia(50%) hue-rotate(180deg) brightness(1.5) contrast(80%) blur(1px)";
+
+      ctx.drawImage(pixelatedImg, 0, 0, canvas.width, canvas.height);
+
+      // Reseteamos filtro para que la goma destination-out funcione bien
+      ctx.filter = "none";
+    }
+
+    if (pixelatedImg.complete) {
+      initCanvas();
+    } else {
+      pixelatedImg.onload = initCanvas;
+    }
+
+    window.addEventListener("resize", initCanvas);
+
+    function getPos(e: MouseEvent | TouchEvent) {
+      const rect = canvas.getBoundingClientRect();
+      let clientX = 0;
+      let clientY = 0;
+
+      if ("touches" in e && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else if (e instanceof MouseEvent) {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top,
+      };
+    }
+
+    function startErasing(e: MouseEvent | TouchEvent) {
+      isDrawing = true;
+      erase(e);
+    }
+
+    function stopErasing() {
+      isDrawing = false;
+      ctx.beginPath();
+    }
+
+    function erase(e: MouseEvent | TouchEvent) {
+      if (!isDrawing) return;
+
+      const pos = getPos(e);
+
+      // Usamos el modo "destination-out" para convertir el trazo en transparencia pura
+      ctx.globalCompositeOperation = "destination-out";
+
+      ctx.lineWidth = 40; // Tamaño de la goma de borrar
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    // Eventos tipados para ratón y táctil
+    canvas.addEventListener("mousedown", (e: MouseEvent) => startErasing(e));
+    canvas.addEventListener("mousemove", (e: MouseEvent) => erase(e));
+    window.addEventListener("mouseup", stopErasing);
+
+    canvas.addEventListener("touchstart", (e: TouchEvent) => startErasing(e));
+    canvas.addEventListener("touchmove", (e: TouchEvent) => erase(e));
+    window.addEventListener("touchend", stopErasing);
+  }
+
+  // Ejecución en Astro
+  setupPaintEraser();
+  document.addEventListener("astro:after-swap", setupPaintEraser);
+</script>

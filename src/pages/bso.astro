@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Banda sonora | Segundo Cielo Dossier">
@@ -9,33 +9,26 @@ import Layout from '../layouts/Layout.astro';
         <h1>Segundo Cielo</h1>
       </hgroup>
     </a>
-  
-
-
-
-
 
     <div class="bso-description">
       <p class="first-p">
-              <img
-      src="https://web.archive.org/web/20040520174007if_/http://www.geocities.com:80/nightmarecreatures86/music.gif"
-      alt=""
-      width="100%"
-    />
-        La propuesta sonora del cortometraje se construye desde una idea
-        central: la tecnología como presencia constante. El sonido del
-        ordenador —su zumbido, el ventilador, los pequeños clics— no
-        funciona solo como ambiente, sino como un elemento narrativo que
-        acompaña y define el estado de la protagonista. Estos sonidos,
-        propios de la tecnología de la época, se integran de forma
-        orgánica con el espacio doméstico, generando una base continua
-        sobre la que se apoya toda la atmósfera. A partir de ahí, la banda
-        sonora se articula mediante drones y capas sostenidas que no
-        buscan imponerse, sino amplificar esa sensación de permanencia,
-        como si el propio entorno estuviera respirando.
+        <img
+          src="https://web.archive.org/web/20040520174007if_/http://www.geocities.com:80/nightmarecreatures86/music.gif"
+          alt=""
+          width="100%"
+        />
+        La propuesta sonora del cortometraje se construye desde una idea central:
+        la tecnología como presencia constante. El sonido del ordenador —su zumbido,
+        el ventilador, los pequeños clics— no funciona solo como ambiente, sino como
+        un elemento narrativo que acompaña y define el estado de la protagonista.
+        Estos sonidos, propios de la tecnología de la época, se integran de forma
+        orgánica con el espacio doméstico, generando una base continua sobre la que
+        se apoya toda la atmósfera. A partir de ahí, la banda sonora se articula mediante
+        drones y capas sostenidas que no buscan imponerse, sino amplificar esa sensación
+        de permanencia, como si el propio entorno estuviera respirando.
       </p>
 
-      <div class="keyboard">
+      <div class="keyboard" id="piano-keyboard">
         <div class="key white" data-note="261.63"></div>
         <div class="key black" data-note="277.18"></div>
         <div class="key white" data-note="293.66"></div>
@@ -72,6 +65,9 @@ import Layout from '../layouts/Layout.astro';
           src="https://blob.gifcities.org/gifcities/YIZEDB2HQSVA6LZWBLOQBU4HBI57L2X2.gif"
           alt="silent hill"
           class="sh-gif"
+          id="sh-trigger"
+          style="cursor: pointer;"
+          title="Haz clic para jugar!"
         />
 
         o a las composiciones de
@@ -79,39 +75,39 @@ import Layout from '../layouts/Layout.astro';
         <span class="music-ref">Bobby Krlic,</span>
 
         donde la música se diluye con el diseño sonoro hasta volverse casi
-        indistinguible. El objetivo es construir un ambiente
-        progresivamente opresivo, con muy pocos motivos armónicos y,
-        cuando aparecen, que lo hagan de forma sutil, casi imperceptible.
-        La música no guía emocionalmente de forma evidente, sino que se
-        adhiere al espacio, a los silencios y a los gestos mínimos,
-        reforzando la sensación de encierro y acompañando la deriva de la
-        protagonista hacia un estado cada vez más absorbente.
-
-
-    <img src="https://web.archive.org/web/20010809113717if_/http://espanol.geocities.com:80/ilselein/_derived/radio.htm_cmp_auto110_bnr.gif" alt="" width="50%">
+        indistinguible. El objetivo es construir un ambiente progresivamente
+        opresivo, con muy pocos motivos armónicos y, cuando aparecen, que lo
+        hagan de forma sutil, casi imperceptible. La música no guía
+        emocionalmente de forma evidente, sino que se adhiere al espacio, a los
+        silencios y a los gestos mínimos, reforzando la sensación de encierro y
+        acompañando la deriva de la protagonista hacia un estado cada vez más
+        absorbente.
 
         <img
-      src="https://web.archive.org/web/20091026194931im_/http://geocities.com/gifs48/img49.gif"
-      alt=""
-    />
+          src="https://web.archive.org/web/20010809113717if_/http://espanol.geocities.com:80/ilselein/_derived/radio.htm_cmp_auto110_bnr.gif"
+          alt=""
+          width="50%"
+        />
 
-    <img
-      src="https://blob.gifcities.org/gifcities/NONADXQSIJVAKGQ3C5U56QS4OCDUMTEL.gif"
-      alt=""
-      class="rock-on"
-    />
+        <img
+          src="https://web.archive.org/web/20091026194931im_/http://geocities.com/gifs48/img49.gif"
+          alt=""
+        />
+
+        <img
+          src="https://blob.gifcities.org/gifcities/NONADXQSIJVAKGQ3C5U56QS4OCDUMTEL.gif"
+          alt=""
+          class="rock-on"
+        />
       </p>
-
-      
     </div>
-
   </section>
 
   <audio id="miAudio" src="/assets/eclipse.mp3" loop autoplay></audio>
 
   <div class="reproductor-cutre">
     <div class="pantalla-digital">
-      <span id="estado">STOPPED</span> | <span id="porcentaje">50%</span>
+      <span id="estado">STOPPED</span> | <span id="porcentaje">70%</span>
     </div>
     <img
       src="https://web.archive.org/web/20090725010258im_/http://www.geocities.com/trudytoo.geo/gifs/speaker2.gif"
@@ -127,7 +123,7 @@ import Layout from '../layouts/Layout.astro';
         class="barra-volumen"
         min="0"
         max="100"
-        value="50"
+        value="70"
       />
     </div>
     <div style="font-size: 9px; margin-top: 5px; text-align: center">
@@ -135,8 +131,20 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 
+  <div class="modal-sh-overlay" id="sh-modal">
+    <div class="modal-sh-content">
+      <div class="modal-sh-header">
+        <span>SILENT_HILL.EXE</span>
+        <button id="btn-cerrar-sh">X</button>
+      </div>
+      <div class="modal-sh-body">
+        <div id="iframe-container"></div>
+      </div>
+    </div>
+  </div>
+
   <style>
-    .rock-on{
+    .rock-on {
       width: 200px;
       transform: translate(50px, 60px);
     }
@@ -152,7 +160,7 @@ import Layout from '../layouts/Layout.astro';
       margin-top: 1rem;
     }
 
-    .second-p{
+    .second-p {
       margin-bottom: 5rem;
     }
     .music-ref {
@@ -182,6 +190,25 @@ import Layout from '../layouts/Layout.astro';
       color: #000;
       width: 180px;
       z-index: 1000;
+    }
+
+    @media (max-width: 900px) {
+      .reproductor-cutre {
+        bottom: 10px;
+        left: 2%;
+        width: 100%;
+        display: flex;
+        max-height: 80px;
+        scale: 0.7;
+
+        img {
+          scale: 0.8;
+        }
+      }
+
+      .second-p {
+        margin-bottom: 9rem;
+      }
     }
 
     .pantalla-digital {
@@ -257,9 +284,15 @@ import Layout from '../layouts/Layout.astro';
       z-index: 1;
     }
 
-    /* Al pulsar se vuelve roja y pierde cualquier estilo */
-    .white:active, .white.active {
-      background-color: #FF0000 !important;
+    /* HOVER EN BLANCAS */
+    .white:hover {
+      background-color: #e0f7fa; /* Un cian muy sutil para insinuar */
+    }
+
+    /* Al pulsar se vuelve roja */
+    .white:active,
+    .white.active {
+      background-color: cyan !important;
     }
 
     /* Posicionamiento de las teclas negras */
@@ -267,15 +300,80 @@ import Layout from '../layouts/Layout.astro';
       height: 60%;
       width: 22px;
       background-color: #000000;
-      border: 1px solid #ffffff; /* Borde blanco para que resalte sobre el fondo negro */
+      border: 1px solid #000;
       z-index: 2;
       margin-left: -11px;
       margin-right: -11px;
     }
 
-    .black:active, .black.active {
-      background-color: #FF0000 !important;
-      border-color: #FF0000;
+    /* HOVER EN NEGRAS */
+    .black:hover {
+      background-color: #006064; /* Cian oscuro */
+    }
+
+    .black:active,
+    .black.active {
+      background-color: rgb(0, 208, 208) !important;
+      border-color: black;
+    }
+
+    /* CSS PARA EL MODAL DEL JUEGO */
+    .modal-sh-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999999;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-sh-content {
+      background: #c0c0c0;
+      border: 4px outset #fff;
+      width: fit-content;
+      box-shadow: 10px 10px 0px #000;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .modal-sh-header {
+      background: #000080;
+      color: #fff;
+      padding: 4px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .modal-sh-header button {
+      background: #c0c0c0;
+      border: 2px outset #fff;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      line-height: 1;
+      padding: 1px 4px;
+    }
+
+    .modal-sh-header button:active {
+      border-style: inset;
+    }
+
+    .modal-sh-body {
+      padding: 10px;
+      background: #000;
+    }
+
+    /* Ajustar el iframe a las dimensiones que pedías */
+    iframe {
+      display: block;
+      border: none;
     }
   </style>
 
@@ -284,11 +382,14 @@ import Layout from '../layouts/Layout.astro';
     function setupAudio() {
       const audio = document.getElementById("miAudio") as HTMLAudioElement;
       const btnMute = document.getElementById("btnMute") as HTMLButtonElement;
-      const sliderVolumen = document.getElementById("sliderVolumen") as HTMLInputElement;
+      const sliderVolumen = document.getElementById(
+        "sliderVolumen",
+      ) as HTMLInputElement;
       const porcentaje = document.getElementById("porcentaje") as HTMLElement;
       const estado = document.getElementById("estado") as HTMLElement;
 
-      if (!audio || !btnMute || !sliderVolumen || !porcentaje || !estado) return;
+      if (!audio || !btnMute || !sliderVolumen || !porcentaje || !estado)
+        return;
 
       audio.volume = 0.5;
 
@@ -304,16 +405,23 @@ import Layout from '../layouts/Layout.astro';
           })
           .catch(() => {
             const playOnInteraction = () => {
-              audio.play().then(() => {
-                if (btnMute) btnMute.textContent = "။";
-                if (estado) {
-                  estado.textContent = "PLAYING";
-                  estado.style.color = "#00FF00";
-                }
-              }).catch(() => {});
+              audio
+                .play()
+                .then(() => {
+                  if (btnMute) btnMute.textContent = "။";
+                  if (estado) {
+                    estado.textContent = "PLAYING";
+                    estado.style.color = "#00FF00";
+                  }
+                })
+                .catch(() => {});
             };
-            document.addEventListener("scroll", playOnInteraction, { once: true });
-            document.addEventListener("click", playOnInteraction, { once: true });
+            document.addEventListener("scroll", playOnInteraction, {
+              once: true,
+            });
+            document.addEventListener("click", playOnInteraction, {
+              once: true,
+            });
           });
       }
 
@@ -340,9 +448,10 @@ import Layout from '../layouts/Layout.astro';
       });
     }
 
-    // 2. LÓGICA DEL SINTETIZADOR WEB AUDIO API
+    // 2. LÓGICA DEL SINTETIZADOR WEB AUDIO API CON BARRIDO
     function setupTeclado() {
       let audioCtx: AudioContext | null = null;
+      let isDragging = false;
 
       function getAudioCtx() {
         if (!audioCtx) {
@@ -357,45 +466,132 @@ import Layout from '../layouts/Layout.astro';
         const oscillator = ctx.createOscillator();
         const gainNode = ctx.createGain();
 
-        oscillator.type = "sawtooth"; 
+        oscillator.type = "sawtooth";
         oscillator.frequency.value = frequency;
 
         gainNode.gain.setValueAtTime(0, ctx.currentTime);
-        gainNode.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.05); 
-        gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2); 
+        gainNode.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.05);
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.001,
+          ctx.currentTime + 1.2,
+        );
 
         oscillator.connect(gainNode);
         gainNode.connect(ctx.destination);
 
         oscillator.start();
-        oscillator.stop(ctx.currentTime + 1.2); 
+        oscillator.stop(ctx.currentTime + 1.2);
       }
 
-      const keys = document.querySelectorAll('.key');
-      keys.forEach(key => {
-        const playNote = () => {
-          const noteStr = key.getAttribute('data-note');
-          if (noteStr) {
-            reproducirNota(parseFloat(noteStr));
-            key.classList.add('active');
-            setTimeout(() => key.classList.remove('active'), 200);
-          }
-        };
+      const keys = document.querySelectorAll(".key");
 
-        key.addEventListener('mousedown', playNote);
-        key.addEventListener('touchstart', (e) => {
-          e.preventDefault(); 
-          playNote();
-        }, { passive: false });
+      function triggerKey(key: Element) {
+        const noteStr = key.getAttribute("data-note");
+        if (noteStr) {
+          reproducirNota(parseFloat(noteStr));
+          key.classList.add("active");
+          setTimeout(() => key.classList.remove("active"), 300);
+        }
+      }
+
+      document.addEventListener("mousedown", () => {
+        isDragging = true;
+      });
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+
+      keys.forEach((key) => {
+        key.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          triggerKey(key);
+        });
+
+        key.addEventListener("mouseenter", () => {
+          if (isDragging) {
+            triggerKey(key);
+          }
+        });
+      });
+
+      const keyboard = document.getElementById("piano-keyboard");
+      if (keyboard) {
+        keyboard.addEventListener(
+          "touchstart",
+          (e) => {
+            e.preventDefault();
+            handleTouch(e);
+          },
+          { passive: false },
+        );
+
+        keyboard.addEventListener(
+          "touchmove",
+          (e) => {
+            e.preventDefault();
+            handleTouch(e);
+          },
+          { passive: false },
+        );
+      }
+
+      let lastTouchedKey: Element | null = null;
+
+      function handleTouch(e: TouchEvent) {
+        const touch = e.touches[0];
+        const element = document.elementFromPoint(touch.clientX, touch.clientY);
+
+        if (
+          element &&
+          element.classList.contains("key") &&
+          element !== lastTouchedKey
+        ) {
+          lastTouchedKey = element;
+          triggerKey(element);
+        }
+      }
+
+      window.addEventListener("touchend", () => {
+        lastTouchedKey = null;
+      });
+    }
+
+    // 3. NUEVA LÓGICA: EJECUTAR SILENT HILL EN MODAL
+    function setupSilentHill() {
+      const trigger = document.getElementById("sh-trigger");
+      const modal = document.getElementById("sh-modal");
+      const btnCerrar = document.getElementById("btn-cerrar-sh");
+      const container = document.getElementById("iframe-container");
+
+      if (!trigger || !modal || !btnCerrar || !container) return;
+
+      const iframeHTML = `<iframe src="https://www.retrogames.cc/embed/41684-silent-hill.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>`;
+
+      trigger.addEventListener("click", () => {
+        container.innerHTML = iframeHTML; // Insertamos el iframe
+        modal.style.display = "flex";
+      });
+
+      function cerrarModal() {
+        modal!.style.display = "none";
+        container!.innerHTML = ""; // Vaciamos el iframe para detener el sonido del emulador
+      }
+
+      btnCerrar.addEventListener("click", cerrarModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) cerrarModal();
       });
     }
 
     setupAudio();
     setupTeclado();
+    setupSilentHill();
 
-    document.addEventListener('astro:after-swap', () => {
+    document.addEventListener("astro:after-swap", () => {
       setupAudio();
       setupTeclado();
+      setupSilentHill();
     });
   </script>
 </Layout>

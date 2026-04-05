@@ -1,0 +1,181 @@
+---
+
+---
+
+<div id="guarda-movil" class="guarda-wrapper" style="display: none;">
+  <div class="paso active" id="g-paso-1">
+    <h3>
+      <img
+        src="https://blob.gifcities.org/gifcities/3D4I4ERQYY2ZOQODUZHF54TGUCZHNETS.gif"
+        alt=""
+      />
+    </h3>
+    <p>
+      Ha solicitado acceder a SEGUNDO CIELO desde un dispositivo móvil. Esta <img
+        src="https://web.archive.org/web/20091027130648im_/http://geocities.com/esc_sec_102/NO.gif"
+        alt=""
+        style="display: inline; height: 40px;"
+      />
+      es la experiencia óptima. ¿Seguro que quieres continuar?
+    </p>
+    <div class="actions">
+      <button
+        class="btn-exit"
+        onclick="window.location.href='https://google.com'">SALIR</button
+      >
+      <button class="btn-next" data-to="2">ADELANTE</button>
+    </div>
+  </div>
+
+  <div class="paso" id="g-paso-2">
+    <h3>
+      <img
+        src="https://blob.gifcities.org/gifcities/SS66TF32H4GP4NV42L3TK33EJEX77OE7.gif"
+        alt=""
+      />
+    </h3>
+    <p>Insistimos en que viva la experiencia desde un monitor de escritorio.</p>
+    <div class="actions">
+      <button class="btn-back" data-to="1">ATRÁS</button>
+      <button class="btn-next" data-to="3">ADELANTE</button>
+    </div>
+  </div>
+
+  <div class="paso" id="g-paso-3">
+    <h3>
+      <img
+        src="https://web.archive.org/web/20090725013618im_/http://www.geocities.com/pcvac_youth_corps/stop.gif"
+        alt=""
+        style="display: inline;"
+      />
+      <img
+        src="https://blob.gifcities.org/gifcities/5OVKUTEL766YN3Y4VCVZWUTJSIHVHDGQ.gif"
+        alt=""
+        style="display: inline;"
+      />
+      <img
+        src="https://web.archive.org/web/20091027011205im_/http://br.geocities.com/samuelhrj/images/stop.gif"
+        alt=""
+        style="display: inline;"
+      />
+    </h3>
+    <p>???????</p>
+    <div class="actions">
+      <button class="btn-back" data-to="2">ATRÁS</button>
+      <button class="btn-next" data-to="4">ADELANTE</button>
+    </div>
+  </div>
+  <div class="paso" id="g-paso-4">
+    <h3></h3>
+    <p>
+      Así sea. Haga click en la imagen para acceder a la página. <img
+        src="https://blob.gifcities.org/gifcities/DQM3MHRK57VUOUBOMGJRZABIKAH4OB3Z.gif"
+        alt=""
+      />
+    </p>
+    <div class="actions">
+      <button class="btn-back" data-to="2">ATRÁS</button>
+      <button id="btn-final-guarda" class="btn-final"> ▶︎ </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .guarda-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjlzbXNsZHBoajdjZDR0YTU0MHNrYTZlMndiNHNxOTBmbXc1cHA3ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjHBa34dVLv0jnoc/giphy.gif");
+    background-size: cover;
+    background-position: center;
+    border: 8px outset #ccc;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    color: black;
+    font-family: Arial, sans-serif;
+    z-index: 100;
+    flex-direction: column;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5);
+  }
+  .paso {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .paso img {
+    max-width: 100%;
+  }
+  .paso.active {
+    display: flex;
+  }
+  .paso h3 {
+    color: red;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+  .paso p {
+    font-size: 1rem;
+    border: 1px dashed black;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: black !important;
+    -webkit-text-fill-color: black !important;
+    background: none !important;
+    text-shadow: none !important;
+    text-align: left;
+    text-transform: capitalize;
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .actions button {
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 3px outset #ccc;
+    text-transform: uppercase;
+    font-family: fantasy;
+  }
+  .btn-next {
+    background: #00950c;
+  }
+  .btn-exit {
+    background: #ff0000;
+    color: white;
+  }
+  .btn-back {
+    background: #888;
+    color: white;
+  }
+
+  .btn-final {
+    background: url("https://i.namu.wiki/i/kmr2b0E-mYHNBItYm19OolwNGCxDU1ta9Lrr6HTWWiuyddg_N_fveUA_j-w5d8UlyxsyrE2Y9nxM6d2G8i8uzw.webp");
+    color: white;
+    text-shadow: 0 0 10px black;
+    font-size: 10vh;
+    border: 5px double red !important;
+    height: 40vh;
+    background-size: cover;
+    &:hover {
+      font-size: 11vh;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Lógica interna de navegación de la guarda
+  document.addEventListener("click", (e) => {
+    if (e.target.dataset.to) {
+      const targetPaso = e.target.dataset.to;
+      document
+        .querySelectorAll(".paso")
+        .forEach((p) => p.classList.remove("active"));
+      document.getElementById(`g-paso-${targetPaso}`).classList.add("active");
+    }
+  });
+</script>
