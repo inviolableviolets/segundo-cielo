@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Marco | Segundo Cielo Dossier">
+  <section id="lucia">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+    <img
+      src="https://blob.gifcities.org/gifcities/PSKQIKMXKGR74FIQ7GOT3YAYUTP6MXXJ.gif"
+      alt=""
+      class="lucia-gif"
+    />
+
+    <div class="character-bio">
+      <p class="first-p">
+        <span>Marco</span> se encuentra es una situación difícil de
+        navegar. Quiere ser el apoyo que Lucía necesita pero no tiene las
+        herramientas para hacerlo. A su vez él también necesita ser
+        escuchado y cuidado y es evidente que su pareja no va a cumplir
+        esa función.
+      </p>
+
+      <p class="second-p">
+        Intenta aparentar normalidad, mantener la rutina y esperar a que
+        la vida se ordene con el tiempo. Aún así,
+        <span class="final-p2">
+          la sombra de una culpa le sigue de cerca.</span
+        >
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.lucia-gif{
+  width: 50%;
+  display: flex;
+  justify-self: center;
+  margin-top: 2rem;
+}
+
+  .character-bio p {
+    color: var(--color-black);
+    font-size: 1.5rem;
+  }
+
+  .character-bio p span {
+    color: purple;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .final-p2 {
+    background-color: var(--color-yellow);
+    color: black !important;
+    font-size: 1.8rem;
+    text-transform: capitalize !important;
+  }
+
+  .first-p {
+    margin-top: 3rem;
+  }
+  .second-p {
+    margin: 1rem 0;
+    font-family: var(--font-sans);
+    margin-bottom: 5rem;
+
+  }
+  .third-p {
+    margin-bottom: 5rem;
+  }
+</style>

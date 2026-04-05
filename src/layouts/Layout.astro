@@ -1,0 +1,71 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import Modal from '../components/Modal.astro';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+  showModalname?: boolean;
+}
+
+const { title = "Segundo Cielo Dossier" } = Astro.props;
+const { pathname } = Astro.url;
+const isIndex = pathname === "/" || pathname === "/index" || pathname === "/index.html";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Segundo Cielo Dossier" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+    {isIndex && <Modal />}
+    
+    <div class="screen"></div>
+
+    <Sidebar />
+
+    <main>
+      <div class="content">
+        <slot />
+      </div>
+    </main>
+	</body>
+</html>
+
+<style is:global>
+  .screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://static.vecteezy.com/system/resources/thumbnails/068/333/475/small_2x/retro-noise-analog-distortion-background-visual-glitch-art-video.jpg");
+    background-position: center;
+    background-size: contain;
+    z-index: 999999999999;
+    pointer-events: none;
+    opacity: 0.1;
+  }
+  
+  main {
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content {
+    width: 65%;
+    height: min-content;
+  }
+</style>

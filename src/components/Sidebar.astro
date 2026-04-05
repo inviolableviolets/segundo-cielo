@@ -1,0 +1,123 @@
+---
+const { pathname } = Astro.url;
+
+const links = [
+  { href: "/sinopsis", label: "Sinopsis" },
+  { href: "/personajes", label: "Personajes" },
+  { href: "/memoria", label: "Memoria de dirección" },
+  { href: "/direccion", label: "Dirección y guion" },
+  { href: "/bso", label: "Banda sonora" },
+  { href: "/referencias", label: "Referencias" },
+  { href: "/fisicos", label: "Espacios físicos" },
+  { href: "/virtuales", label: "Espacios virtuales" },
+];
+
+function isActive(href: string) {
+  return pathname === href || pathname === `${href}/`;
+}
+---
+
+<aside>
+  <img
+    src="https://blob.gifcities.org/gifcities/AX2JFASE63DASLDA3KPBS3WO7F5UUXED.gif"
+    alt=""
+    class="aside-main-img"
+  />
+  <img
+    src="https://blob.gifcities.org/gifcities/DRVXJYEPXMTKQLNRA2CXSTXSZRRCEUYD.gif"
+    alt=""
+    class="god-loves-you-gif"
+  />
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.href} class={isActive(link.href) ? "active" : ""}>
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      <a href="/contactanos" class={isActive("/contactanos") ? "active" : ""}>
+        <img
+          src="https://blob.gifcities.org/gifcities/SDDJOMZJXZPAZWS6T2KYS7Z34YPNNZ7R.gif"
+          alt=""
+          width="35%"
+        />
+      </a>
+    </li>
+  </ul>
+</aside>
+
+<style>
+  aside {
+    background: radial-gradient(darkblue, rgb(160, 160, 221), blue);
+    height: 100vh;
+    width: 20vw;
+    position: sticky;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+  }
+
+  aside .aside-main-img {
+    width: 100%;
+    margin-top: -1rem;
+  }
+
+  aside ul {
+    color: var(--color-white);
+    padding-top: 4rem;
+    font-family: var(--font-serif);
+    list-style-type: none;
+    width: 100%;
+  }
+
+  aside li {
+    font-size: 1.4rem;
+    padding: 0 0.5rem 0.25rem 0.5rem;
+    text-transform: uppercase;
+  }
+
+  aside li:hover {
+    color: var(--color-yellow) !important;
+  }
+
+  aside li a:not(.active):hover {
+    color: var(--color-cyan) !important;
+
+
+  }
+
+  aside li::before {
+    content: "❤︎⁠";
+    margin-right: 0;
+    font-size: 18px;
+    color: var(--color-yellow);
+  }
+
+  aside .god-loves-you-gif {
+    width: 70%;
+    padding-top: 4rem;
+    filter: hue-rotate(120deg) brightness(200%);
+    opacity: 0.4;
+    margin-top: -3rem;
+    margin-bottom: -3rem;
+  }
+
+  a.active {
+    color: var(--color-yellow);
+
+    font-weight: bolder !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
+</style>

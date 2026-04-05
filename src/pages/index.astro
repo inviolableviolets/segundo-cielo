@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Segundo Cielo Dossier">
+  <section id="intro">
+    <a href="#" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+    <img
+      src="https://blob.gifcities.org/gifcities/34FUBMX7XAJOSKCRFIVZ6T4VA3UMZSFU.gif"
+      alt=""
+      class="bienvenido-gif"
+    />
+    <p class="first-p">
+      Si has llegado hasta aquí, quizá no sea casualidad. Tal vez hay algo
+      en tu interior que lleva tiempo intentando hablarte… una sensación
+      de vacío que no desaparece, un cansancio que no se va con el
+      descanso, o la ausencia de alguien que dejó un silencio demasiado
+      grande. Puede que hayas aprendido a seguir adelante, pero en el
+      fondo sabes que algo no está en su lugar.
+    </p>
+
+    <img
+      src="https://pd187.neocities.org/Wood/1983/Heaven_Gif/are_you_going_to_heaven.gif"
+      alt=""
+    />
+    <img
+      src="https://pd187.neocities.org/Wood/1983/Heaven_Gif/are_you_going_to_heaven.gif"
+      alt=""
+    />
+    <img
+      src="https://pd187.neocities.org/Wood/1983/Heaven_Gif/are_you_going_to_heaven.gif"
+      alt=""
+    />
+    <img
+      src="https://pd187.neocities.org/Wood/1983/Heaven_Gif/are_you_going_to_heaven.gif"
+      alt=""
+    />
+
+    <p class="segundo-p">
+      Puedes explorar, leer, observar… o simplemente quedarte en silencio.
+      No estás obligado a entenderlo todo hoy. Las puertas de Segundo
+      Cielo no se cruzan de una sola vez. Se descubren poco a poco. Y si
+      has llegado hasta aquí, ya has dado <span class="el-primer-paso">el primer paso</span>.
+    </p>
+
+    <a href="/sinopsis" class="segundo-paso">DA EL SEGUNDO PASO </a>
+  </section>
+
+  <img
+    src="https://blob.gifcities.org/gifcities/7PHMQNW5BIMNBQVEU7YTZV56A4BLCPLL.gif"
+    alt=""
+    class="bottom-gif"
+  />
+</Layout>
+
+<style>
+  .bottom-gif {
+    width: 100%;
+  }
+
+  .bienvenido-gif {
+    width: 50%;
+    display: flex;
+    justify-self: center;
+  }
+
+  .segundo-p {
+    margin-top: 2rem;
+  }
+
+  .first-p {
+    background-color: yellow;
+    color: black;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+.segundo-paso {
+  border-radius: 100%;
+  background: white;
+  color: white;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bolder;
+  border: 20px double white;
+  letter-spacing: -3px;
+  background: linear-gradient(to right, lightblue, rgb(223, 68, 220));
+  box-shadow: 0 0 50px navy;
+  font-family: fantasy;
+  cursor: pointer;
+  margin: 3rem 0;
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+img:not(.bienvenido-gif):not(.bottom-gif) {
+ width: 24%;
+}
+
+.segundo-p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: yellow;
+  color: black;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.el-primer-paso {
+  font-family: fantasy;
+  color: black;
+  background: yellow;
+text-transform: uppercase;
+}
+</style>

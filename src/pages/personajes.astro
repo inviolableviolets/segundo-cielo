@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Personajes | Segundo Cielo Dossier">
+  <section id="personajes">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+
+    <div class="personajes-container">
+      <a href="/lucia" class="lucia-img">
+        <p>conoce a <span>Lucía</span></p>
+        <img src="/assets/lucia.png" alt="" />
+      </a>
+      <a href="/marco" class="marco-img">
+        <p>conoce a <span>Marco</span></p>
+        <img src="/assets/marco.png" alt="" />
+      </a>
+    </div>
+  </section>
+</Layout>
+<style>
+  .personajes-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .lucia-img,
+  .marco-img {
+    position: relative;
+    margin: 2rem;
+    text-decoration: none;
+    /* transition: transform 0.2s; */
+  }
+
+  .lucia-img img,
+  .marco-img img {
+    height: 50vh;
+  }
+
+  .lucia-img:hover,
+  .marco-img:hover {
+    transform: scale(1.1);
+  }
+
+  .lucia-img p,
+  .marco-img p {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-style: italic;
+    width: 100%;
+    padding-left: 2rem;
+    background-image: linear-gradient(var(--color-blue), var(--color-white));
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 2rem;
+  }
+
+  .marco-img p {
+    background-image: linear-gradient(purple, var(--color-yellow));
+  }
+
+  .lucia-img span,
+  .marco-img span {
+    font-size: 2.8rem !important;
+    font-style: normal;
+  }
+</style>

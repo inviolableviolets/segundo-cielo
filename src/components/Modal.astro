@@ -1,0 +1,132 @@
+---
+---
+
+<div class="modal">
+  <img
+    src="https://blob.gifcities.org/gifcities/VF4XAPQCAXGGU4R3Z54CQGTMDNIEO5J3.gif"
+    alt=""
+    class="img-modal"
+  />
+
+  <p>SEGUNDO CIELO</p>
+  <button id="close-modal">LLEVAME ALLi</button>
+  <div class="cross">✟</div>
+</div>
+
+<script>
+  function setupModal() {
+    const modal = document.querySelector(".modal") as HTMLElement;
+    const button = document.getElementById("close-modal");
+
+    if (!modal || !button) return;
+
+    // Only show if not seen before in this session or always for testing if preferred.
+    // For now, let's keep the user's logic but ensure it's visible if needed.
+    if (!localStorage.getItem("modalVisto")) {
+      modal.style.display = "flex";
+      // localStorage.setItem("modalVisto", "true"); // Maybe keep it off during dev?
+    } else {
+      // If we want it to show every time during development, we can comment out the next line.
+      modal.style.display = "flex"; 
+    }
+
+    button.addEventListener("click", function () {
+      localStorage.setItem("modalVisto", "true");
+      modal.style.transition = "transform 0.4s cubic-bezier(0.36, 0, 0.66, -0.56)";
+      modal.style.transformOrigin = "center center";
+      modal.style.transform = "scale(0)";
+      modal.style.pointerEvents = "none";
+
+      modal.addEventListener(
+        "transitionend",
+        () => {
+          modal.style.visibility = "hidden";
+          modal.style.display = "none";
+        },
+        { once: true }
+      );
+    });
+  }
+
+  // Setup on initial load
+  setupModal();
+</script>
+
+<style>
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    font-size: 5rem;
+    z-index: 9999999999999; /* Higher than .screen (adding one more 9) */
+  }
+
+  #close-modal {
+    all: unset;
+    text-decoration: underline;
+    text-shadow: 0 0 10px yellow;
+    font-style: italic;
+    font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+    display: inline;
+    border-radius: 100%;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+
+  #close-modal:hover {
+    border-radius: 0;
+    text-shadow: 0 0 10px yellow;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: 3.2rem;
+  }
+
+  .modal p {
+    font-size: 8rem;
+    background: -webkit-linear-gradient(#000dff, #06fcae);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 0 10px white;
+  }
+
+  .modal div {
+    text-shadow: 0 0 10px white;
+    font-size: 7rem;
+    position: absolute;
+    top: 62%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modal .img-modal {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .modal .cross {
+    animation: heartbeat 1s infinite;
+  }
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>

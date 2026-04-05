@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Lucía | Segundo Cielo Dossier">
+  <section id="lucia">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+
+    <img
+      src="https://blob.gifcities.org/gifcities/EZAWLCEKJF7EK7DCKGTIFH7PBCAKXQ6U.gif"
+      alt=""
+      class="lucia-gif"
+    />
+
+    <div class="character-bio">
+      <p class="first-p">
+        No sabemos cómo era <span>Lucía</span> antes de su pérdida. La que
+        conocemos es callada, reflexiva y desconfiada. Dentro de ella hay
+        una rabia que no ha sabido canalizar y que, sobretodo con su
+        pareja, asoma cuando algo perturba su aislamiento.
+      </p>
+
+      <p class="second-p">
+        Podemos intuir que antes era ordenada, proactiva y energética y
+        podemos observar que ahora ha decidido romper con todo lo que la
+        mantenía a flote. Descuidando sus relaciones y a sí misma parece
+        estar, en cierta forma, buscando tocar fondo y quizás quedarse en
+        él.
+      </p>
+
+      <p class="third-p">
+        But una parte de <span>Lucía</span> busca algo a lo que asirse,
+        <span class="final-p">
+          algo que prometa llevarla a un lugar mejor.</span
+        >
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lucia-gif {
+    width: 50%;
+    display: flex;
+    justify-self: center;
+    margin-top: 5rem;
+  }
+
+  .character-bio p {
+    color: var(--color-black);
+    font-size: 1.5rem;
+  }
+
+  .character-bio p span {
+    color: var(--color-blue-bg);
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .final-p {
+    background-color: var(--color-yellow);
+    color: var(--color-black) !important;
+    font-size: 1.8rem;
+    text-transform: capitalize !important;
+  }
+
+  .first-p {
+    margin-top: 5rem;
+  }
+  .second-p {
+    margin: 1rem 0;
+    font-family: var(--font-sans);
+  }
+  .third-p {
+    margin-bottom: 5rem;
+  }
+</style>

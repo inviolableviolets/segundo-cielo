@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dirección y guion | Segundo Cielo Dossier">
+  <section id="intro">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+
+    <div class="directores-container">
+      <details class="director-details">
+        <summary class="director-summary">
+          [+] Director: 𝓛𝓾𝓬𝓪𝓼 𝓥𝓲𝓭𝓪𝓾𝓻
+        </summary>
+        <div class="director-content">
+          <p>
+            Lucas, tras forjarse en entornos rígidos y jerárquicos,
+            canalizó su impulso creativo en una puesta en escena marcada
+            por la disciplina y el control absoluto. Obsesionado con la
+            unidad, el orden y cierta épica sobria de raíz
+            tradicionalista, su mirada artística tiende a composiciones
+            cerradas, casi marciales, donde nada queda al azar. Una vieja
+            herida que le dejó con un solo testículo, un detalle que
+            muchos interpretan como metáfora involuntaria de su estilo:
+            crudo y sin margen para lo superfluo.
+          </p>
+        </div>
+      </details>
+
+      <details class="director-details">
+        <summary class="director-summary">
+          [+] Director: 𝓓𝓪𝓷𝓲 𝓣𝓮𝔃𝓵𝓪
+        </summary>
+        <div class="director-content">
+          <p>
+            Daniel es un realizador frustrado de origen austriaco que,
+            tras ser rechazado por las academias de bellas artes en su
+            ejventud, volcó toda su fijación estética en la puesta en
+            escena de masas. Obsesionado con el orden, la pureza visual y
+            el misticismo de las antiguas leyendas centroeuropeas, su
+            visión artística se inclina siempre al impacto del bloque
+            monumental y a la propaganda emocional.
+          </p>
+        </div>
+      </details>
+    </div>
+    <img
+      src="/assets/direccion.jpg"
+      alt="Dirección"
+      class="director-img"
+    />
+  </section>
+</Layout>
+
+<style>
+  #intro {
+    position: relative;
+  }
+  .directores-container {
+    margin-top: 3rem;
+    font-family: "Times New Roman", serif;
+  }
+
+  .director-details {
+    background-color: #000080;
+    border: 2px solid #ffff00;
+    padding: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .director-summary {
+    color: #00ffff;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .director-content {
+    background-color: #111;
+    padding: 15px;
+    margin-top: 10px;
+    border: 3px dashed #ff00ff;
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+
+  .director-content p {
+    margin: 0;
+  }
+
+  .director-img {
+    width: 100%;
+    margin-top: 2rem;
+  }
+</style>

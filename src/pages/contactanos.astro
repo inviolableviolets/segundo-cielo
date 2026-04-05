@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contáctanos | Segundo Cielo Dossier">
+  <section id="contactanos" class="contact-section">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+    <div class="contact-content">
+      <p>
+        Si sientes la necesidad de escribir, hazlo sin pensarlo demasiado.
+        No necesitas encontrar las palabras perfectas.
+      </p>
+
+      <p>
+        Cuando estés listo, puedes enviarnos un correo; a veces, ese pequeño
+        paso es suficiente para empezar a cambiar algo.
+      </p>
+
+      <marquee scrollamount="20">
+        En Segundo Cielo leemos cada mensaje con calma y sin juicio,
+        acompañando lo que compartas desde el respeto y la escucha.
+      </marquee>
+
+      <div id="notificacion">
+        ✨ ¡¡Mensaje enviado con éxito al Segundo Cielo!! ✨
+        <img
+          src="https://i.pinimg.com/originals/99/58/75/995875404e6975ddbc7a5f9fe1228fdf.gif"
+          alt=""
+        />
+      </div>
+
+      <div class="form-container">
+        <form id="mi-formulario">
+          <table>
+            <tr>
+              <td>Tu nombre:</td>
+              <td>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  size="30"
+                  placeholder="Escribe tu nombre aqui"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Tu email:</td>
+              <td>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  size="30"
+                  placeholder="tu@email.com"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Asunto:</td>
+              <td>
+                <input
+                  type="text"
+                  id="asunto"
+                  name="asunto"
+                  size="30"
+                  placeholder="Escribe tu asunto aquí"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Mensaje:</td>
+              <td>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  rows="6"
+                  cols="30"
+                  placeholder="Escribe tu historia aquí"
+                  required
+                ></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center">
+                <input
+                  type="submit"
+                  id="btn-enviar"
+                  value="👉 ENVIAR YA 👈"
+                />
+                &nbsp;&nbsp;
+                <input
+                  type="reset"
+                  value="Borrar todo"
+                  class="btn-reset"
+                />
+              </td>
+            </tr>
+          </table>
+
+          <img
+            src="https://blob.gifcities.org/gifcities/E6PT63GMIYYJHYSZXB2LYQCCU7MWOYBN.gif"
+            alt=""
+            class="contactanos-gif"
+          />
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    #contactanos p {
+      background-color: var(--color-blue-bg);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #contactanos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-content {
+      margin-top: 5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* CSS CORREGIDO */
+    .form-container {
+      margin-top: 4rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    #mi-formulario {
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      gap: 30px; /* Separación de 30px entre la tabla y el GIF */
+      margin-bottom: 5rem;
+    }
+
+    .contactanos-gif {
+      width: 300px;
+      height: auto;
+      flex-shrink: 0; /* Evita que el flexbox aplaste la imagen */
+    }
+
+    table {
+      border: 10px solid white;
+      background-color: rgb(0, 128, 255);
+      padding: 10px;
+      margin: 0 !important; /* Eliminamos el auto que empujaba la tabla */
+    }
+    /* FIN CSS CORREGIDO */
+
+    .btn-reset {
+      background-color: tomato;
+      color: white;
+      font-family: Comic Sans MS;
+      border: 3px solid darkred;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    input,
+    textarea {
+      border: 2px dashed green;
+      background-color: lightblue;
+      font-family: Comic Sans MS, cursive;
+      font-size: 20px;
+    }
+    input[type="submit"] {
+      background-color: lightblue;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      border: 10px ridge white;
+      color: navy;
+      cursor: pointer;
+      font-family: Comic Sans MS, cursive;
+      margin-top: 10px;
+    }
+    td {
+      color: white;
+      font-weight: bold;
+      padding: 6px;
+    }
+    marquee {
+      color: yellow;
+      text-shadow: blue 0 0 10px;
+      font-size: 2rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #notificacion {
+      display: none;
+      text-align: center;
+      font-family: Comic Sans MS, cursive;
+      font-weight: bold;
+      font-size: 24px;
+      color: #00ff00;
+      background-color: #000;
+      border: 5px dashed #ffff00;
+      padding: 15px;
+      margin: 20px auto;
+      width: 80%;
+      z-index: 100000000;
+      position: relative;
+    }
+
+    /* Bonus para móviles: en pantallas pequeñas los apilamos para que no se deforme */
+    @media (max-width: 600px) {
+      #mi-formulario {
+        flex-direction: column !important;
+        gap: 15px;
+      }
+    }
+  </style>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <script is:inline>
+    function setupContactForm() {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init("_CJbV2ZxKfbeRnBIS");
+      } else {
+        console.error("EmailJS not found");
+        return;
+      }
+
+      const formulario = document.getElementById("mi-formulario");
+      const btnEnviar = document.getElementById("btn-enviar");
+      const notificacion = document.getElementById("notificacion");
+
+      if (!formulario || !btnEnviar || !notificacion) return;
+
+      formulario.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        btnEnviar.value = "Enviando...";
+        btnEnviar.disabled = true;
+
+        const serviceID = "service_a210qxc";
+        const templateID = "template_4gsodck";
+
+        emailjs.sendForm(serviceID, templateID, this).then(
+          () => {
+            btnEnviar.value = "👉 ENVIAR YA 👈";
+            btnEnviar.disabled = false;
+            formulario.style.display = "none";
+            notificacion.style.display = "block";
+          },
+          (err) => {
+            btnEnviar.value = "👉 ENVIAR YA 👈";
+            btnEnviar.disabled = false;
+            alert("Vaya... Hubo un error: " + JSON.stringify(err));
+          }
+        );
+      });
+    }
+
+    setupContactForm();
+  </script>
+</Layout>

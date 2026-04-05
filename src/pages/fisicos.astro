@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Espacios físicos | Segundo Cielo Dossier">
+  <section id="intro">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+
+    <img
+      src="https://blob.gifcities.org/gifcities/K7T3UGDIIC7MKIDNO6GLMAUL7JEY2CQK.gif"
+      alt=""
+      class="intro-gif"
+    />
+
+    <p class="intro-p">
+      La acción transcurre prácticamente en un único apartamento
+      compartido, donde la cotidianeidad adquiere un carácter cada vez más
+      opresivo. Dentro de este entorno, la zona de estudio —presidida por
+      el ordenador— se convierte en el núcleo emocional de la
+      protagonista, un refugio dentro de la casa donde pasa largas horas
+      aislada, desplazando su relación con el exterior hacia la pantalla.
+    </p>
+
+    <div class="carrusel-wrapper">
+      <img
+        src="https://blob.gifcities.org/gifcities/2JPOOFBCZJYERHBDE4CPGQ5GXW4M77NM.gif"
+        alt=""
+        class="overlay-gif"
+      />
+      <div id="carrusel" class="espacios-carrusel">
+        <img src="/assets/ef1.png" alt="" />
+        <img src="/assets/ef2.png" alt="" />
+        <img src="/assets/ef3.png" alt="" />
+        <img src="/assets/ef4.png" alt="" />
+        <img src="/assets/ef5.png" alt="" />
+        <img src="/assets/ef6.png" alt="" />
+        <img src="/assets/ef7.png" alt="" />
+        <img src="/assets/ef8.png" alt="" />
+        <img src="/assets/ef9.png" alt="" />
+        <img src="/assets/ef10.png" alt="" />
+        <img src="/assets/ef11.png" alt="" />
+        <img src="/assets/ef12.png" alt="" />
+      </div>
+    </div>
+
+          <p style="margin: -5rem 0 5rem 0">
+            Son habitaciones vividas, con un cierto desorden que refleja el
+            momento por el que está pasando la pareja. Además, sitúa la acción
+            en un contexto temporal concreto (principio de los 00s), con una
+            estética contenida, sin excesos decorativos, pero atravesada por
+            objetos y referencias propias de la época. A medida que avanza la
+            historia, este mismo espacio se convierte en el escenario donde se
+            manifiesta la decadencia de la relación y el deterioro de la salud
+            mental de la protagonista.
+          </p>
+        </section>
+      </div>
+
+      <img
+        src="https://blob.gifcities.org/gifcities/OGBEAQDLE63ETFZMOFINNRMLH55J62LZ.gif"
+        style="width: 100%"
+      />
+
+
+  <style>
+    .intro-gif {
+      display: flex;
+      justify-self: center;
+      margin: 4rem -2rem;
+      width: 50%;
+    }
+    .intro-p {
+      margin: -2rem 0 0rem 0;
+    }
+
+    p{
+      font-size: 1.5rem;
+      background: yellow;
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style: italic;
+      font-weight: bold;
+    }
+    .carrusel-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      border: 10px solid var(--color-yellow);
+      height: 500px;
+      margin-bottom: 5rem;
+    }
+    .espacios-carrusel {
+      display: flex;
+      flex-wrap: nowrap;
+      will-change: transform;
+    }
+    .espacios-carrusel img {
+      max-height: 500px;
+      /* transition: transform 0.3s, box-shadow 0.3s; */
+    }
+    .espacios-carrusel img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 100px var(--color-black);
+    }
+    .overlay-gif {
+      position: absolute;
+      z-index: 99;
+      top: -5%;
+      left: -10%;
+      width: 120%;
+      height: 110%;
+      pointer-events: none;
+    }
+    .final-p {
+      margin-bottom: 5rem;
+    }
+  </style>
+
+  <script>
+    function setupCarousel() {
+      const carrusel = document.getElementById("carrusel") as HTMLElement;
+      if (!carrusel) return;
+
+      // Duplicate content for seamless loop
+      carrusel.innerHTML += carrusel.innerHTML;
+
+      let scrollLeft = 0;
+      const velocidad = 3.5; // Adjusted for smoothness
+      let pausado = false;
+
+      function animarCarrusel() {
+        if (!document.getElementById("carrusel")) return; // Stop if navigated away
+
+        if (!pausado) {
+          scrollLeft += velocidad;
+          if (scrollLeft >= carrusel.scrollWidth / 2) {
+            scrollLeft = 0;
+          }
+          carrusel.style.transform = `translateX(-${scrollLeft}px)`;
+        }
+        requestAnimationFrame(animarCarrusel);
+      }
+
+      carrusel.addEventListener("mouseenter", () => { pausado = true; });
+      carrusel.addEventListener("mouseleave", () => { pausado = false; });
+
+      animarCarrusel();
+    }
+
+    setupCarousel();
+  </script>
+</Layout>

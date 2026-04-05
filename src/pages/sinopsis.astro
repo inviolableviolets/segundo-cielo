@@ -1,0 +1,247 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sinopsis | Segundo Cielo Dossier">
+  <section id="sinopsis">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+
+    <div class="intro-flex">
+      <p>
+        Es el año 2006, <a href="/lucia">Lucía (27)</a> ha sufrido
+        un aborto involuntario. Convive con su pareja
+        <a href="/marco">Marco (30)</a> (30). Ella está aislada en
+        casa, su ordenador como único refugio. Es evidente que esta
+        pérdida ha deteriorado su relación con el mundo exterior, no está
+        trabajando y, aunque sigan juntos, la relación con Marco se ha
+        convertido en un desmejorado fantasma de lo que solía ser.
+      </p>
+      <img
+        src="/assets/sinopsis2.jpg"
+        alt=""
+        class="side-img"
+      />
+    </div>
+
+    <p>
+      Ensimismada en su búsqueda por una fuerza superior llega a la web
+      <span>“Segundo Cielo”.</span>Un sitio esotérico, de corte sectario
+      que recoge algunas ideas de textos apócrifos cristianos y los
+      convierte en una promesa de sanación. Según la página, es posible
+      ascender a est<span>e Segundo Cielo</span> a través de la figura de
+      El Guía. Para llamar a esta entidad, necesita realizar cuatro
+      rituales y subirlos a <a href="./contactanos">la web.</a>
+    </p>
+
+    <p>
+      Cada nuevo ritual la acerca un poco más a un territorio extraño que
+      empieza a consumirla.
+    </p>
+
+    <div class="canvas-wrapper">
+      <img
+        src="/assets/sinopsis.jpg"
+        alt="Sinopsis Banner"
+        class="banner-img"
+        id="pizarra-image"
+      />
+      <canvas id="pizarra-canvas"></canvas>
+    </div>
+
+  </section>
+</Layout>
+
+<style>
+  #sinopsis p {
+    background-color: var(--color-purple);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+
+
+  .intro-flex {
+    display: flex;
+    z-index: 9;
+  }
+
+  .intro-flex p {
+    margin-top: 5rem !important; /* nth-child(2) logic */
+  }
+
+  #sinopsis p:nth-child(4) {
+    font-family: var(--font-sans);
+    font-weight: bold;
+  }
+
+  #sinopsis span {
+    color: lightblue;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: var(--font-gothic);
+  }
+
+  #sinopsis a:not(.h1) {
+    color: var(--color-yellow);
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      font-style: normal;
+    }
+  }
+
+  .h1{
+    cursor: pointer;
+  }
+
+  .side-img {
+    width: 200px;
+    opacity: 0.4;
+    filter: contrast(2);
+  }
+
+  /* NUEVOS ESTILOS PARA LA PIZARRA DE DIBUJO */
+  .canvas-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5rem;
+    line-height: 0; 
+    
+    /* 1. Ponemos el cursor aquí por si acaso */
+    cursor: crosshair !important; 
+  }
+
+  .banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* 2. Le decimos a la imagen que ignore el ratón para que no "tape" al canvas */
+    pointer-events: none; 
+  }
+
+  #pizarra-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    
+  cursor: url('data:image/x-icon;base64,AAACAAEAICAQAAAAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAKHmAML1/wBxRMkAfXpwALGK/wDHt6EAAN3/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAAAAAAAAAAAAAAAAAAzVQAAAAAAAAAAAAAAAAAGBVVQAAAAAAAAAAAAAAAABGBVUAAAAAAAAAAAAAAAARBGBQAAAAAAAAAAAAAAABF3BGAAAAAAAAAAAAAAAAEXcXAAAAAAAAAAAAAAAAARdxdwAAAAAAAAAAAAAAABF3F3AAAAAAAAAAAAAAAAEXcXcAAAAAAAAAAAAAAAARdxdwAAAAAAAAAAAAAAABF3F3AAAAAAAAAAAAAAAAEXcXcAAAAAAAAAAAAAAAABdxdwAAAAAAAAAAAAAAAAInF3AAAAAAAAAAAAAAAAACIncAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////////////////////////////////////////////////////////////////z////4f///8D///+Af///AH///gD///wB///4A///8Af//+AP///AH///gD///wB///4A///+Af///AP///wH///8D////D////w=='), auto !important; }   
+</style>
+
+<script>
+  function setupPizarra() {
+    const canvas = document.getElementById('pizarra-canvas') as HTMLCanvasElement;
+    const img = document.getElementById('pizarra-image') as HTMLImageElement;
+    
+    if (!canvas || !img) return;
+
+    // SOLUCIÓN AL TIPADO: Le aseguramos a TS que getContext('2d') devuelve el contexto y no es null
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+    if (!ctx) return;
+
+    // Variables de estado del dibujo
+    let dibujando = false;
+    let xAnterior = 0;
+    let yAnterior = 0;
+
+    // Función para ajustar el tamaño real del canvas al tamaño visual de la imagen
+    function ajustarTamañoCanvas() {
+      // El tamaño interno del canvas (width/height) debe coincidir
+      // con el tamaño visual (offsetWidth/offsetHeight)
+      canvas.width = img.offsetWidth;
+      canvas.height = img.offsetHeight;
+
+      // Configuraciones de estilo de la línea
+      ctx.strokeStyle = '#000000'; // Color negro
+      ctx.lineWidth = 3;           // Grosor de la línea
+      ctx.lineCap = 'round';       // Bordes redondeados para suavidad
+      ctx.lineJoin = 'round';
+    }
+
+    // Ajustar tamaño al cargar la imagen y si se cambia el tamaño de la ventana
+    if (img.complete) {
+      ajustarTamañoCanvas();
+    } else {
+      img.addEventListener('load', ajustarTamañoCanvas);
+    }
+    window.addEventListener('resize', ajustarTamañoCanvas);
+
+
+    // --- Funciones de dibujo ---
+
+    function empezarDibujo(e: MouseEvent | TouchEvent) {
+      dibujando = true;
+      // Obtenemos las coordenadas correctas relativas al canvas
+      const { x, y } = obtenerCoordenadas(e);
+      xAnterior = x;
+      yAnterior = y;
+    }
+
+    function dibujar(e: MouseEvent | TouchEvent) {
+      if (!dibujando) return;
+      // Evita que la página haga scroll al dibujar en móvil
+      if (e instanceof TouchEvent) {
+        e.preventDefault(); 
+      }
+
+      const { x, y } = obtenerCoordenadas(e);
+
+      ctx.beginPath();
+      ctx.moveTo(xAnterior, yAnterior); // Punto de partida
+      ctx.lineTo(x, y);                 // Punto actual
+      ctx.stroke();                     // Dibuja la línea
+
+      // Actualizamos las coordenadas anteriores para la siguiente línea
+      xAnterior = x;
+      yAnterior = y;
+    }
+
+    function pararDibujo() {
+      dibujando = false;
+    }
+
+    // Función auxiliar para calcular coordenadas relativas al elemento canvas
+    function obtenerCoordenadas(e: MouseEvent | TouchEvent) {
+      const rect = canvas.getBoundingClientRect();
+      
+      // Manejo de ratón y pantallas táctiles
+      if (e instanceof MouseEvent) {
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+      } else {
+        // TouchEvent
+        return {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top
+        };
+      }
+    }
+
+
+    // --- Event Listeners del Ratón ---
+    canvas.addEventListener('mousedown', empezarDibujo);
+    canvas.addEventListener('mousemove', dibujar);
+    window.addEventListener('mouseup', pararDibujo); // Window para capturar el 'up' fuera del canvas
+
+    // --- Event Listeners Táctiles (para móvil) ---
+    canvas.addEventListener('touchstart', empezarDibujo, { passive: false });
+    canvas.addEventListener('touchmove', dibujar, { passive: false });
+    canvas.addEventListener('touchend', pararDibujo);
+  }
+
+  // Ejecutar la configuración al cargar la página
+  setupPizarra();
+</script>

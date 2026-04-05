@@ -1,0 +1,282 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Referencias | Segundo Cielo Dossier">
+  <div id="dvd-container">
+    <img
+      src="https://blob.gifcities.org/gifcities/FTMLQLJHNPDQPJPPNZKA2YP7DKFVSR3E.gif"
+      alt="GIF DVD"
+    />
+  </div>
+
+  <img id="poster-flotante" src="" alt="Poster" />
+
+  <section id="sinopsis" class="ref-section">
+    <a href="/" class="h1">
+      <hgroup>
+        <h1>Segundo Cielo</h1>
+      </hgroup>
+    </a>
+
+    <div class="intro-container">
+      <p>
+        Las referencias se apoyan en un imaginario de terror ligado a las
+        primeras tecnologías digitales y a su forma primitiva de habitar
+        lo cotidiano. Películas como
+        <span
+          class="pelicula"
+          data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1EPUf0Jghgq6HV6IXBEjwhZlrdRVFjI2zmg&s"
+          >Ring</span
+        >,
+        <span
+          class="pelicula"
+          data-src="https://m.media-amazon.com/images/M/MV5BOWQ0NTc2OTEtZTcyNC00ZDk3LWIyYzMtMDlkMmIwNmUwYmVlXkEyXkFqcGc@._V1_.jpg"
+          >Pulse</span
+        >
+        o
+        <span
+          class="pelicula"
+          data-src="https://www.onderhond.com/thumbs/img/posters/300xauto/one-missed-call-2003.webp"
+          >One Missed Call</span
+        >
+        entienden lo tecnológico —teléfonos, ordenadores, internet— no
+        como meros dispositivos, sino como canales a través de los cuales
+        algo se filtra y permanece.
+      </p>
+    </div>
+    <img
+      src="https://web.archive.org/web/20091022031228im_/http://www.geocities.com/moulinrougeladies4u/jewlpurpbarjpg.gif"
+      width="100%"
+      height="50px"
+      alt=""
+    />
+    <p class="p2">
+      Esa misma lógica atraviesa el tipo de entornos digitales en los que
+      se inspira el cortometraje: páginas web de estética rudimentaria,
+      fragmentadas, con discursos extraños, mezcla de espiritualidad,
+      conspiración y estructuras que recuerdan a dinámicas sectarias.
+      Espacios que, por su propia forma, invitan a quedarse, a hacer clic,
+      a seguir profundizando sin una dirección clara, generando recorridos
+      que se asemejan a un “rabbithole”. En este sentido, el trabajo de
+      <span
+        class="pelicula"
+        data-src="https://m.media-amazon.com/images/M/MV5BNDZhMTlkOWItZmI2ZC00MmNmLWI4ZTctNmNmZmIwNTYyYzQ4XkEyXkFqcGc@._V1_.jpg"
+        >We’re All Going to the World’s Fair</span
+      >
+      resulta especialmente cercano por su forma de abordar la relación
+      entre identidad, aislamiento y pantalla.
+    </p>
+
+    <img
+      src="https://web.archive.org/web/20091022031228im_/http://www.geocities.com/moulinrougeladies4u/jewlpurpbarjpg.gif"
+      width="100%"
+      height="50px"
+      alt=""
+    />
+
+    <p>
+      En conjunto, estas referencias construyen un tono donde la
+      tecnología no es solo un medio, sino un espacio cargado de
+      presencia, capaz de absorber, condicionar y transformar la
+      experiencia de los personajes desde dentro.
+    </p>
+
+    <div class="ref-grid">
+      <img src="/assets/ref1.png" alt="" />
+      <img src="/assets/ref2.png" alt="" />
+      <img src="/assets/ref3.png" alt="" />
+      <img src="/assets/ref4.png" alt="" />
+      <img src="/assets/ref5.png" alt="" />
+      <img src="/assets/ref6.png" alt="" />
+      <img src="/assets/ref7.png" alt="" />
+      <img src="/assets/ref8.png" alt="" />
+      <img src="/assets/ref9.png" alt="" />
+      <img src="/assets/ref10.png" alt="" />
+      <img src="/assets/ref11.png" alt="" />
+      <img src="/assets/ref12.png" alt="" />
+      <img src="/assets/ref13.png" alt="" />
+      <img src="/assets/ref14.png" alt="" />
+      <img src="/assets/ref15.png" alt="" />
+      <img src="/assets/ref16.png" alt="" style="margin-bottom: 5rem" />
+    </div>
+  </section>
+
+  <style>
+    .ref-section {
+      position: relative;
+      z-index: 1;
+    }
+    .intro-container {
+      display: flex;
+    }
+    .intro-container p {
+      margin-top: 4rem;
+    }
+
+    p{
+      font-size: 1.5rem;
+      background: rebeccapurple;
+    }
+
+    .p2{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    #dvd-container {
+      position: fixed;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+      left: 0;
+      opacity: 0;
+      bottom: 0;
+      background-color: #ffff00; 
+    }
+
+    #dvd-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .pelicula {
+      color: paleturquoise;
+      cursor: help;
+      font-size: 2rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-decoration: dotted underline fuchsia;
+    }
+
+    #poster-flotante {
+      display: none;
+      position: fixed;
+      width: 250px;
+      border: 3px solid var(--color-blue);
+      outline: 3px solid var(--color-pink);
+      z-index: 10000;
+      pointer-events: none;
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 12px;
+    }
+    .ref-grid img {
+      width: 100%;
+      object-fit: cover;
+      outline: 4px solid cyan;
+      border: 4px dashed fuchsia;
+    }
+    @media (max-width: 768px) {
+      .ref-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .ref-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  </style>
+
+  <script>
+    function setupReferenciaScripts() {
+      // 1. DVD BOUNCE
+      const dvd = document.getElementById("dvd-container");
+      if (!dvd) return;
+
+      const dvdWidth = 150;
+      const dvdHeight = 150;
+
+      let posX = 0;
+      let posY = Math.random() * (window.innerHeight - dvdHeight);
+
+      let speedX = 3;
+      let speedY = 3;
+
+      const colores = ["#ff00ff", "#00ffff", "#ffff00", "#00ff00", "#ff0000", "#0000ff"];
+
+      function moverDVD() {
+        if (!document.getElementById("dvd-container")) return; 
+
+      dvd!.style.opacity = "1";
+        
+
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        posX += speedX;
+        posY += speedY;
+
+        if (posX + dvdWidth >= screenWidth) {
+          posX = screenWidth - dvdWidth; 
+          speedX = -speedX;
+          cambiarColor();
+        } else if (posX <= 0) {
+          posX = 0;
+          speedX = -speedX;
+          cambiarColor();
+        }
+
+        if (posY + dvdHeight >= screenHeight) {
+          posY = screenHeight - dvdHeight; 
+          speedY = -speedY;
+          cambiarColor();
+        } else if (posY <= 0) {
+          posY = 0;
+          speedY = -speedY;
+          cambiarColor();
+        }
+
+        dvd!.style.left = posX + "px";
+        dvd!.style.top = posY + "px";
+
+        requestAnimationFrame(moverDVD);
+      }
+
+      function cambiarColor() {
+        const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
+        dvd!.style.backgroundColor = colorAleatorio;
+      }
+
+      moverDVD();
+
+      // 2. POSTER HOVER
+      const posterFlotante = document.getElementById("poster-flotante") as HTMLImageElement;
+      const peliculas = document.querySelectorAll(".pelicula");
+
+      if (!posterFlotante) return;
+
+      peliculas.forEach((peli) => {
+        peli.addEventListener("mouseenter", () => {
+          const rutaImagen = peli.getAttribute('data-src') || '';
+          posterFlotante.src = rutaImagen;
+          posterFlotante.style.display = "block";
+        });
+
+        peli.addEventListener("mousemove", (e: Event) => {
+          const mouseEvent = e as MouseEvent;
+          posterFlotante.style.left = mouseEvent.clientX + 15 + "px";
+          posterFlotante.style.top = mouseEvent.clientY + 15 + "px";
+        });
+
+        peli.addEventListener("mouseleave", () => {
+          posterFlotante.style.display = "none";
+          posterFlotante.src = "";
+        });
+      });
+    }
+
+    setupReferenciaScripts();
+    document.addEventListener('astro:after-swap', setupReferenciaScripts);
+  </script>
+</Layout>
